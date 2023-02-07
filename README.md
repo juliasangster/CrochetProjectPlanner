@@ -23,7 +23,7 @@ the materials needed for the graphghan, which is often the hardest aspect to est
 This project is of particular interest to me, as I spend a lot of my free time crocheting.
 There is also a lot of interesting extensions I can add to my user stories, with sufficient time. Such as inputting
 a JPEG image and having a graphghan pattern automatically generate. I believe this program will provide a useful
-framework for future, more extensive projects.  
+framework for future, more extensive projects.    
 
 ## User Stories
 * As a user, I want to be add new templates for crochet graphghan patterns to my collection of patterns
