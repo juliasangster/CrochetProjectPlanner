@@ -1,59 +1,33 @@
-# Animal Crossing: New Horizons Companion 
-****
+# Graphghan Pattern Creator
+***
 
 ## Proposal
+***
 
-*Animal Crossing: New Horizons* (AC:NH) is a video game published 
-in 2020 by Nintendo. In the game, the player finds themselves on a 
-strange island inhabited by animal citizens. The player is tasked 
-with improving the island, gaining new citizens, collecting critters 
-and artifacts for the local museum, and much, much more!
+Crochet is an ancient fibre art, in which yarn is weaved into complex patterns using a hook. 
+Crochet artists refer to their work as "projects", and often follow recipe-like patterns to design their work. 
+This ensures that, geometrically, the stitches will form the correct shapes and be resistant to breakage. 
+One of the most notorious crochet projects is the afghan, otherwise known as the throw blanket.
+And of the afghans, one of the most notoriously difficult afghans to create is the graphghan, an afghan that you stitch
+a pixelated pattern into. These blankets often take weeks of pre-planning, collecting materials, and then months
+of crocheting to complete. 
 
-The game has reached critical acclaim and has a dedicated fanbase 
-associated with it. The game is casual, so players often
-develop goals for their island that require tracking of resources, 
-which the game itself does not support. As a result, many of these 
-fans search for "companion apps" that simplify tasks in-game. 
+The goal of this project is to develop an application that can assist in planning a graphghan project.
+The application will open with an option to add projects or to view generated projects. 
+If adding a new project, the program will prompt you to generate one on a grid-style interface. You will be able
+to select the number of squares in the pattern, with length and width being independent. 
+You will be able to select colors to fill the grids with. You can save this pattern to use while making your graphghan.
+As well, you will be able to generate a list of how much yarn the project will take. This will assist in purchasing
+the materials needed for the graphghan, which is often the hardest aspect to estimate in a project.
 
-The goal of my project is to develop a Java desktop app that will
-track various aspects of an AC:NH island. This will include:
-* **Critters** - track caught and uncaught critters, and develop a simple way to see a summary of uncaught creatures
-* **Villagers** - track which villagers currently live on the island, their birthdays, and personalities
-* **Produce** - fruits, vegetables, and flowers left to obtain
-* **Wishlist** - a space for a player to summarize their goals
-
-This project is of particular interest to me, as I am an advid player of AC:NH.
-I have used many companion apps, and think it would be interesting to design one that best fits 
-the needs of AC:NH players like myself. I also believe this app will provide an 
-interesting framework that could develop into a longer-term project. 
+This project is of particular interest to me, as I spend a lot of my free time crocheting.
+There is also a lot of interesting extensions I can add to my user stories, with sufficient time. Such as inputting
+a JPEG image and having a graphghan pattern automatically generate. I believe this program will provide a useful
+framework for future, more extensive projects. 
 
 ## User Stories
-
-### Story 1: The Villager Tracker
-
-As a player of AC:NH, I want to be able to keep track of my villagers. 
-I want to be able to add villagers as they move in, and remove villagers that move out. 
-I want a page to see a summary of my villagers on a single page. 
-
-### Story 2: The Incomplete Museum
-
-As an AC:NH player with an incomplete museum, I want to be able to track which 
-critters (fish, bugs, deep-sea creatures) I have caught in the game. 
-Based on my caught critters, I want to be able to see a list of all 
-uncaught critters left in the game. 
-
-
-### Story 3: The Novice Gardener
-
-As a novice AC:NH gardener, I want to collect every variation of flowers, vegetables,
-and fruit. I want to be able to record which produce I have. Based on this, I
-should be able to see which produce I am missing. 
-
-### Story 4: The Quirky Player
-
-I'm a player of AC:NH that sets odd, quirky goals for myself in-game. These can include
-things like giving gifts to villagers, visiting a friend in-game, or 
-trying to get all furniture from a specific set. I want to be able to use my AC:NH 
-companion app to track these goals. I should be able to add entries to the wishlist 
-with any text I'd like. I want to be able to filter goals by type, to quickly
-see a subset of my AC:NH goals. 
+* As a user, I want to be add new templates for crochet graphghan patterns to my collection of patterns
+* As a user, I want to be able to remove the projects from the collection once completed
+* As a user, I want to be able to select the colours on the graphghan template, in order to design my own patterns. 
+I should be able to pick multiple different colours on the same graphghan.
+* As a user, I want to be able to use my graphghan pattern to estimate how much yarn I need to purchase for the project
