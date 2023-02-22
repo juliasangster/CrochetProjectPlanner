@@ -26,11 +26,12 @@ a JPEG image and having a graphghan pattern automatically generate. I believe th
 framework for future, more extensive projects.    
 
 ## User Stories
-* As a user, I want to be add new templates for crochet graphghan patterns to my collection of patterns
-* As a user, I want to be able to remove the projects from the collection once completed
-* As a user, I want to be able to select the colours on the graphghan template, in order to design my own patterns. 
+* As a user, I want to be add new templates for crochet graphghan patterns to my collection of patterns by adding 
+dimensions of length and width
+* As a user, I want to be able to remove the projects from the collection by providing the name of the project to remove
+* As a user, I want to be able to change the colours on the graphghan template, in order to design my own patterns. 
 I should be able to pick multiple different colours on the same graphghan.
-* As a user, I want to be able to use my graphghan pattern to estimate how much yarn I need to purchase for the project
+* As a user, I want to be able to visualize the graphghan pattern I'm designing in the console, with colours
 
 
 

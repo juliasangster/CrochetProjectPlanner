@@ -1,0 +1,63 @@
+
+
+Menu Scratch Work
+---------------------------------------
+Select Options:
+========================================
+Welcome to the crochet app!"
+"Please select from the following options:"
+n -> create new project
+l -> see a list of all projects");
+q -> quit
+______________________________________
+
+n-> create a new project
+================================
+prompt for name: "What would you like to name this project?"
+rows: "How many rows?"
+columns: "How many columns?"
+
+then print a copy of graphghan with name at top and say
+"New Graphghan (name) has been added to collection"
+
+___________________________________
+
+l -> see list of all projects
+===================================
+print list of all projects first
+
+Please select a graphghan from the list:
+- get input
+
+please select option:
+e - edit graphghan
+d - delete graphghan
+v - view graphghan
+// c - calculate yarn usage for graphghan
+
+___________________________________
+
+e - edit graphghan
+===================================
+what graphghan would you like to edit?
+
+<user enters name of graphghan>
+
+what would you like to do?
+- change 1 square (s)
+- change 1 row (r)
+- change 1 column (c)
+- change entire graphghan (g)
+- finish editing (f)
+
+For each:
+- input color
+- input row/column/index
+
+after each input,
+- print graphghan
+- ask for follow-up input
+
+______________________________________
+
+
