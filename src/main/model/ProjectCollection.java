@@ -48,8 +48,4 @@ public class ProjectCollection extends ArrayList<Graphghan> {
         return false;
     }
 
-    public ArrayList<Graphghan> getProjects() {
-        return this;
-    }
-
 }

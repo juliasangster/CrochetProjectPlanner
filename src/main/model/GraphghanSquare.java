@@ -2,8 +2,8 @@ package model;
 
 public class GraphghanSquare {
     private Color color;
-    private int row;
-    private int column;
+    private final int row;
+    private final int column;
 
     // EFFECTS: Creates a graphghan square with a given row index (row),
     //          column index (column), and white color

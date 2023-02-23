@@ -18,9 +18,9 @@ public enum Color {
     BRIGHT_CYAN("\u001b[96m"),
     WHITE("\u001b[97m");
 
-    private String colorCode;
+    private final String colorCode;
 
-    private Color(String colorCode) {
+    Color(String colorCode) {
         this.colorCode = colorCode;
     }
 

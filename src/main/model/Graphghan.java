@@ -2,7 +2,7 @@ package model;
 
 public class Graphghan {
     private final GraphghanSquare[][] squares;
-    private String name;
+    private final String name;
     private final int rows;
     private final int columns;
 
@@ -29,13 +29,6 @@ public class Graphghan {
     // EFFECTS: returns name of graphghan
     public String getName() {
         return name;
-    }
-
-    // TODO: Remove?
-    // MODIFIES: this
-    // EFFECTS:  Changes the name to the given name
-    public void setName(String name) {
-        this.name = name;
     }
 
     // EFFECTS: returns the total number of rows in the graphghan
