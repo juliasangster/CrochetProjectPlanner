@@ -17,6 +17,8 @@ public class CrochetApp {
         runCrochetApp();
     }
 
+    // MODIFIES:
+    // EFFECTS:
     public void runCrochetApp() {
         boolean runApp = true;
         String keyInput = null;
@@ -35,11 +37,10 @@ public class CrochetApp {
             }
         }
 
-
-
-
     }
 
+    // MODIFIES:
+    // EFFECTS:
     public void processKeyInput(String keyInput) {
         if (keyInput.equals("n")) {
             newGraphghan();
@@ -54,13 +55,18 @@ public class CrochetApp {
         }
     }
 
-
+    // MODIFIES:
+    // EFFECTS:
+    // REQUIRES:
     private void setupCrochetApp() {
         projects = new ProjectCollection();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
 
+    // MODIFIES:
+    // EFFECTS:
+    // REQUIRES:
     // EFFECTS: Displays a menu of start options to user through console
     public static void startMenuOptions() {
         System.out.println("\n\u001b[35m" + "Welcome to the crochet app!" + "\u001B[0m");
@@ -71,10 +77,16 @@ public class CrochetApp {
         System.out.println("\tq -> quit");
     }
 
+    // MODIFIES:
+    // EFFECTS:
+    // REQUIRES:
     public static void printColourBlock(GraphghanSquare graphghanSquare) {
         //        System.out.print("\u001b[20m" + "⬛" + "\u001B[0m");
     }
 
+    // MODIFIES:
+    // EFFECTS:
+    // REQUIRES:
     // TODO: Remove requires
     // REQUIRES: String not in projects, string not empty
     private void newGraphghan() {
@@ -93,6 +105,9 @@ public class CrochetApp {
 
     }
 
+    // MODIFIES:
+    // EFFECTS:
+    // REQUIRES:
     private void viewGraphghanList() {
         if (projects.isEmpty()) {
             System.out.println("There are no graphghans to show\n");

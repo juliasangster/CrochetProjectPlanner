@@ -31,6 +31,7 @@ public class Graphghan {
         return name;
     }
 
+    // TODO: Remove?
     // MODIFIES: this
     // EFFECTS:  Changes the name to the given name
     public void setName(String name) {
@@ -58,8 +59,7 @@ public class Graphghan {
     //          index (column) will be returned. Note it will not be removed
     //          from the array, only the reference will return.
     public GraphghanSquare getSquare(int row, int column) {
-        GraphghanSquare square = squares[row][column];
-        return square;
+        return squares[row][column];
     }
 
 
@@ -69,7 +69,7 @@ public class Graphghan {
     }
 
     public void changeColorEntireRow(Color color, int row) {
-        for (GraphghanSquare squareRow[]: squares) {
+        for (GraphghanSquare[] squareRow : squares) {
             for (GraphghanSquare square: squareRow) {
                 if (square.getRow() == row) {
                     square.changeColor(color);
@@ -79,7 +79,7 @@ public class Graphghan {
     }
 
     public void changeColorEntireColumn(Color color, int column) {
-        for (GraphghanSquare squareRow[]: squares) {
+        for (GraphghanSquare[] squareRow: squares) {
             for (GraphghanSquare square: squareRow) {
                 if (square.getColumn() == column) {
                     square.changeColor(color);
@@ -89,7 +89,7 @@ public class Graphghan {
     }
 
     public void changeColorEntireGraphghan(Color color) {
-        for (GraphghanSquare squareRow[] : squares) {
+        for (GraphghanSquare[] squareRow : squares) {
             for (GraphghanSquare square : squareRow) {
                 square.changeColor(color);
             }
