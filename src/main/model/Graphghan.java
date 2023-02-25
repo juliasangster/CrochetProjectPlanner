@@ -70,6 +70,7 @@ public class Graphghan {
         return g;
 
     }
+
     // TODO: Piazza post: need more in modifies (this.squares[row][col])
     // MODIFIES: this
     // REQUIRES: row <= (this.rows - 1)
