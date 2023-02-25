@@ -1,5 +1,7 @@
 package model;
 
+// CLASS COMMENT:
+
 public class GraphghanSquare {
     private Color color;
     private final int row;

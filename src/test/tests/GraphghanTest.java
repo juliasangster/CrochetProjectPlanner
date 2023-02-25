@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// CLASS COMMENT:
+
 public class GraphghanTest {
 
     final static String TEST_STRING_1 = "Test";

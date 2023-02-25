@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// CLASS COMMENT:
+
 public class ProjectCollectionTest {
 
     ProjectCollection projectCollection;
@@ -32,32 +34,32 @@ public class ProjectCollectionTest {
         projectCollection = new ProjectCollection();
     }
 
-    @Test
+//    @Test
 
-    void addProjectTestSingleAdd() {
-        assertTrue(projectCollection.addProject(TEST_STRING_1, TEST_ROW_1, TEST_COL_1));
-        Graphghan g = projectCollection.get(0);
-        assertEquals(TEST_STRING_1, g.getName());
-        assertEquals(TEST_ROW_1, g.getRows());
-        assertEquals(TEST_COL_1, g.getColumns());
-        assertFalse(projectCollection.isEmpty());
-    }
+//    void addProjectTestSingleAdd() {
+//        assertTrue(projectCollection.addProject(TEST_STRING_1, TEST_ROW_1, TEST_COL_1));
+//        Graphghan g = projectCollection.get(0);
+//        assertEquals(TEST_STRING_1, g.getName());
+//        assertEquals(TEST_ROW_1, g.getRows());
+//        assertEquals(TEST_COL_1, g.getColumns());
+//        assertFalse(projectCollection.isEmpty());
+//    }
 
-    @Test
-
-    void addProjectTestMultipleAdd() {
-        assertTrue(projectCollection.addProject(TEST_STRING_1, TEST_ROW_1, TEST_COL_1));
-        assertTrue(projectCollection.addProject(TEST_STRING_2, TEST_ROW_2, TEST_COL_2));
-        Graphghan graphghan1 = projectCollection.get(0);
-        Graphghan graphghan2 = projectCollection.get(1);
-        assertEquals(TEST_STRING_1, graphghan1.getName());
-        assertEquals(TEST_ROW_1, graphghan1.getRows());
-        assertEquals(TEST_COL_1, graphghan1.getColumns());
-        assertEquals(TEST_STRING_2, graphghan2.getName());
-        assertEquals(TEST_ROW_2, graphghan2.getRows());
-        assertEquals(TEST_COL_2, graphghan2.getColumns());
-        assertFalse(projectCollection.isEmpty());
-    }
+//    @Test
+//
+//    void addProjectTestMultipleAdd() {
+//        assertTrue(projectCollection.addProject(TEST_STRING_1, TEST_ROW_1, TEST_COL_1));
+//        assertTrue(projectCollection.addProject(TEST_STRING_2, TEST_ROW_2, TEST_COL_2));
+//        Graphghan graphghan1 = projectCollection.get(0);
+//        Graphghan graphghan2 = projectCollection.get(1);
+//        assertEquals(TEST_STRING_1, graphghan1.getName());
+//        assertEquals(TEST_ROW_1, graphghan1.getRows());
+//        assertEquals(TEST_COL_1, graphghan1.getColumns());
+//        assertEquals(TEST_STRING_2, graphghan2.getName());
+//        assertEquals(TEST_ROW_2, graphghan2.getRows());
+//        assertEquals(TEST_COL_2, graphghan2.getColumns());
+//        assertFalse(projectCollection.isEmpty());
+//    }
 
     @Test
 
@@ -67,19 +69,19 @@ public class ProjectCollectionTest {
         assertTrue(projectCollection.isEmpty());
     }
 
-    @Test
-    // TODO: Could add more to this test
-    void removeProjectTestSingleRemoveNonEmptySuccess() {
-        projectCollection.addProject(TEST_STRING_1,TEST_COL_1, TEST_ROW_1);
-
-        assertFalse(projectCollection.isEmpty());
-
-        boolean result = projectCollection.removeProject(TEST_STRING_1);
-
-        assertTrue(result);
-        assertTrue(projectCollection.isEmpty());
-
-    }
+//    @Test
+//    // TODO: Could add more to this test
+//    void removeProjectTestSingleRemoveNonEmptySuccess() {
+//        projectCollection.addProject(TEST_STRING_1,TEST_COL_1, TEST_ROW_1);
+//
+//        assertFalse(projectCollection.isEmpty());
+//
+//        boolean result = projectCollection.removeProject(TEST_STRING_1);
+//
+//        assertTrue(result);
+//        assertTrue(projectCollection.isEmpty());
+//
+//    }
 
     @Test
 

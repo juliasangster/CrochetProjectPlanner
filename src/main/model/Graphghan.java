@@ -1,5 +1,10 @@
 package model;
 
+// CLASS COMMENT: class representing a graphghan blanket, with its
+// number of squares along the rows (rows, >= 0), number of squares
+// along the columns (columns, >= 0), a name (non-empty), and
+// a list of graphghan squares contained in the blanket
+
 public class Graphghan {
     private final GraphghanSquare[][] squares;
     private final String name;
@@ -7,10 +12,11 @@ public class Graphghan {
     private final int columns;
 
 
-    // EFFECTS: Constructs a graphghan of size (rows * columns)
+    // EFFECTS: constructs a graphghan of with the correct
+    //          number of rows/columns (size = rows * columns)
     //          with a constructed graphghan square at every
     //          combination of row index and column index and given name.
-    //          All graphghan squares are made white by default.
+    //          all graphghan squares are made white by default.
     public Graphghan(String name, int rows, int columns) {
         this.squares = new GraphghanSquare[rows][columns];
 
@@ -41,9 +47,16 @@ public class Graphghan {
         return columns;
     }
 
-    // EFFECTS: Returns the size of the
+    // EFFECTS: returns the size of the graphghan in units of
+    //          total number of graphghan squares
     public int getSize() {
         return columns * rows;
+    }
+
+    // EFFECTS: returns all graphghan squares for the given
+    //          graphghan
+    public GraphghanSquare[][] getSquares() {
+        return this.squares;
     }
 
     // REQUIRES: row <= (this.rows - 1)
@@ -52,15 +65,26 @@ public class Graphghan {
     //          index (column) will be returned. Note it will not be removed
     //          from the array, only the reference will return.
     public GraphghanSquare getSquare(int row, int column) {
-        return squares[row][column];
+
+        GraphghanSquare g =  squares[row][column];
+        return g;
+
     }
-
-
+    // TODO: Piazza post: need more in modifies (this.squares[row][col])
+    // MODIFIES: this
+    // REQUIRES: row <= (this.rows - 1)
+    //           column <= (this.columns - 1)
+    // EFFECTS:  Changes the color of the graphghan at the given index
+    //           to the given color
     public void changeColorSingleSquare(Color color, int row, int column) {
         GraphghanSquare graphghanSquare = getSquare(row,column);
         graphghanSquare.changeColor(color);
     }
 
+    // MODIFIES: this
+    // REQUIRES: row <= (this.rows - 1)
+    // EFFECTS: Changes all graphghan squares in the given row
+    //          to the given color
     public void changeColorEntireRow(Color color, int row) {
         for (GraphghanSquare[] squareRow : squares) {
             for (GraphghanSquare square: squareRow) {
@@ -71,6 +95,10 @@ public class Graphghan {
         }
     }
 
+    // MODIFIES: this
+    // REQUIRES: column <= (this.columns - 1)
+    // EFFECTS: Changes all graphghan squares in the given column
+    //          to the given color
     public void changeColorEntireColumn(Color color, int column) {
         for (GraphghanSquare[] squareRow: squares) {
             for (GraphghanSquare square: squareRow) {
@@ -81,6 +109,9 @@ public class Graphghan {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: Changes the colour of all graphghan squares
+    //          a graphghan to the given color
     public void changeColorEntireGraphghan(Color color) {
         for (GraphghanSquare[] squareRow : squares) {
             for (GraphghanSquare square : squareRow) {

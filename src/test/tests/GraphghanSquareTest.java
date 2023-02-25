@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+// CLASS COMMENT:
+
 public class GraphghanSquareTest {
 
     final static int TEST_ROW_1 = 0;
