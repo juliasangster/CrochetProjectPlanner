@@ -1,6 +1,6 @@
 package model;
 
-// CLASS COMMENT: Class representing all ANSI representable
+// CLASS COMMENT: Enumeration representing all ANSI representable
 // console colours, with associated ANSI color codes
 
 public enum Color {
@@ -23,12 +23,12 @@ public enum Color {
 
     private final String colorCode;
 
-    // EFFECTS: Creates a colour object with a given colour code.
+    // EFFECTS: creates a colour object with a given colour code.
     Color(String colorCode) {
         this.colorCode = colorCode;
     }
 
-    // EFFECTS: Returns the ANSI color code for the given color
+    // EFFECTS: returns the ANSI color code for the given color
     public String getColorCode() {
         return this.colorCode;
     }

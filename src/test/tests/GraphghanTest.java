@@ -10,38 +10,39 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // CLASS COMMENT: Testing suite for model.Graphghan class
 
+// TODO: definitely needs th3e most work - add additional tests
 
 public class GraphghanTest {
 
-    final static String TEST_STRING_1 = "Test";
-    final static String TEST_STRING_2 = "WideBlanket";
-    final static String TEST_STRING_3 = "NarrowBlanket";
+    private final static String TEST_STRING_1 = "Test";
+    private final static String TEST_STRING_2 = "WideBlanket";
+    private final static String TEST_STRING_3 = "NarrowBlanket";
 
-    final static int TEST_ROW_1 = 10;
-    final static int TEST_COL_1 = 10;
+    private final static int TEST_ROW_1 = 10;
+    private final static int TEST_COL_1 = 10;
 
-    final static int TEST_ROW_2 = 10;
-    final static int TEST_COL_2 = 15;
+    private final static int TEST_ROW_2 = 10;
+    private final static int TEST_COL_2 = 15;
 
-    final static int TEST_ROW_3 = 20;
-    final static int TEST_COL_3 = 10;
+    private final static int TEST_ROW_3 = 20;
+    private final static int TEST_COL_3 = 10;
 
 
-    Graphghan graphghan1;
-    Graphghan graphghan2;
-    Graphghan graphghan3;
+    private Graphghan graphghan1;
+    private Graphghan graphghan2;
+    private Graphghan graphghan3;
 
     @BeforeEach
 
-    void graphghanTestSetup() {
+    public void graphghanTestSetup() {
         graphghan1 = new Graphghan(TEST_STRING_1, TEST_ROW_1, TEST_COL_1);
         graphghan2 = new Graphghan(TEST_STRING_2, TEST_ROW_2, TEST_COL_2);
         graphghan3 = new Graphghan(TEST_STRING_3, TEST_ROW_3, TEST_COL_3);
     }
 
     @Test
-
-    void graphghanConstructorTestSquare() {
+    // CASE: Constructing a graphghan where rows = columns
+    public void graphghanConstructorTestSquare() {
         String name = graphghan1.getName();
         int rows = graphghan1.getRows();
         int columns = graphghan1.getColumns();
@@ -65,8 +66,8 @@ public class GraphghanTest {
     }
 
     @Test
-
-    void graphghanConstructorTestWide() {
+    // CASE: Constructing a graphghan where rows < columns
+    public void graphghanConstructorTestWide() {
         String name = graphghan2.getName();
         int rows = graphghan2.getRows();
         int columns = graphghan2.getColumns();
@@ -90,8 +91,8 @@ public class GraphghanTest {
     }
 
     @Test
-
-    void graphghanConstructorTestNarrow() {
+    // CASE: Constructing a graphghan where rows > columns
+    public void graphghanConstructorTestNarrow() {
         String name = graphghan3.getName();
         int rows = graphghan3.getRows();
         int columns = graphghan3.getColumns();
@@ -115,65 +116,74 @@ public class GraphghanTest {
     }
 
     @Test
+    // CASE: Change entire color of graphghan once WHITE -> BLACK
+    public void changeColorEntireGraphghanSingle() {
 
-    void changeColorEntireGraphghanSingle() {
-        GraphghanSquare first = graphghan1.getSquare(0,0);
-        GraphghanSquare last = graphghan1.getSquare(TEST_ROW_1-1,TEST_COL_1-1);
+        GraphghanSquare[][] originalSquares = graphghan1.getSquares();
 
-        Color color1 = first.getColor();
-        Color color2 = last.getColor();
-
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                assertEquals(i, originalSquares[j][i].getColumn());
+                assertEquals(j, originalSquares[j][i].getRow());
+                assertEquals(Color.WHITE, originalSquares[j][i].getColor());
+            }
+        }
         graphghan1.changeColorEntireGraphghan(Color.BLACK);
 
-        GraphghanSquare first2 = graphghan1.getSquare(0,0);
-        GraphghanSquare last2 = graphghan1.getSquare(TEST_ROW_1-1,TEST_COL_1-1);
-        Color color3 = first2.getColor();
-        Color color4 = last2.getColor();
+        GraphghanSquare[][] changedSquares = graphghan1.getSquares();
 
-        assertEquals(Color.WHITE, color1);
-        assertEquals(Color.WHITE, color2);
-        assertEquals(Color.BLACK, color3);
-        assertEquals(Color.BLACK, color4);
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                assertEquals(i, changedSquares[j][i].getColumn());
+                assertEquals(j, changedSquares[j][i].getRow());
+                assertEquals(Color.BLACK, changedSquares[j][i].getColor());
+            }
+        }
 
     }
 
     @Test
+    // CASE: Change entire color of graphghan once WHITE -> BLACK -> DARK_MAGENTA
+    public void changeColorEntireGraphghanMultiple() {
 
-    void changeColorEntireGraphghanMultiple() {
-        GraphghanSquare first = graphghan1.getSquare(0,0);
-        GraphghanSquare last = graphghan1.getSquare(TEST_ROW_1-1,TEST_COL_1-1);
+        GraphghanSquare[][] originalSquares = graphghan1.getSquares();
 
-        Color color1 = first.getColor();
-        Color color2 = last.getColor();
-
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                assertEquals(i, originalSquares[j][i].getColumn());
+                assertEquals(j, originalSquares[j][i].getRow());
+                assertEquals(Color.WHITE, originalSquares[j][i].getColor());
+            }
+        }
         graphghan1.changeColorEntireGraphghan(Color.BLACK);
 
-        GraphghanSquare first2 = graphghan1.getSquare(0,0);
-        GraphghanSquare last2 = graphghan1.getSquare(TEST_ROW_1-1,TEST_COL_1-1);
+        GraphghanSquare[][] newSquares1 = graphghan1.getSquares();
 
-        Color color3 = first2.getColor();
-        Color color4 = last2.getColor();
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                assertEquals(i, newSquares1[j][i].getColumn());
+                assertEquals(j, newSquares1[j][i].getRow());
+                assertEquals(Color.BLACK, newSquares1[j][i].getColor());
+            }
+        }
 
         graphghan1.changeColorEntireGraphghan(Color.DARK_MAGENTA);
 
-        GraphghanSquare first3 = graphghan1.getSquare(0,0);
-        GraphghanSquare last3 = graphghan1.getSquare(TEST_ROW_1-1,TEST_COL_1-1);
+        GraphghanSquare[][] newSquares2 = graphghan1.getSquares();
 
-        Color color5 = first3.getColor();
-        Color color6 = last3.getColor();
-
-        assertEquals(Color.WHITE, color1);
-        assertEquals(Color.WHITE, color2);
-        assertEquals(Color.BLACK, color3);
-        assertEquals(Color.BLACK, color4);
-        assertEquals(Color.DARK_MAGENTA, color5);
-        assertEquals(Color.DARK_MAGENTA, color6);
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                assertEquals(i, newSquares2[j][i].getColumn());
+                assertEquals(j, newSquares2[j][i].getRow());
+                assertEquals(Color.DARK_MAGENTA, newSquares2[j][i].getColor());
+            }
+        }
 
     }
 
     @Test
-
-    void changeColorSingleSquareSingle() {
+    // CASE: Change color of single square in graphghan once WHITE -> BRIGHT_RED
+    public void changeColorSingleSquareSingle() {
         GraphghanSquare controlSquare1 = graphghan1.getSquare(0,0);
         GraphghanSquare testSquare1 = graphghan1.getSquare(5,4);
 
@@ -192,53 +202,223 @@ public class GraphghanTest {
     }
 
     @Test
-
-    void changeColorEntireRowSingle() {
+    // CASE: Change color of single square in graphghan once WHITE -> BLACK -> DARK_RED
+    public void changeColorSingleSquareMultiple() {
         GraphghanSquare controlSquare1 = graphghan1.getSquare(0,0);
-        GraphghanSquare testSquare1 = graphghan1.getSquare(5,0);
-        GraphghanSquare testSquare2 = graphghan1.getSquare(5,9);
+        GraphghanSquare testSquare1 = graphghan1.getSquare(5,4);
 
         Color color1 = controlSquare1.getColor();
         Color color2 = testSquare1.getColor();
-        Color color3 = testSquare2.getColor();
 
-        graphghan1.changeColorEntireRow(Color.BRIGHT_RED, 5);
+        graphghan1.changeColorSingleSquare(Color.BLACK, 5,4);
 
-        Color color4 = controlSquare1.getColor();
-        Color color5 = testSquare1.getColor();
-        Color color6 = testSquare2.getColor();
+        Color color3 = controlSquare1.getColor();
+        Color color4 = testSquare1.getColor();
+
+        graphghan1.changeColorSingleSquare(Color.DARK_RED, 5,4);
+
+        Color color5 = controlSquare1.getColor();
+        Color color6 = testSquare1.getColor();
 
         assertEquals(Color.WHITE, color1);
         assertEquals(Color.WHITE, color2);
         assertEquals(Color.WHITE, color3);
-        assertEquals(Color.WHITE, color4);
-        assertEquals(Color.BRIGHT_RED, color5);
-        assertEquals(Color.BRIGHT_RED, color6);
+        assertEquals(Color.BLACK, color4);
+        assertEquals(Color.WHITE, color5);
+        assertEquals(Color.DARK_RED, color6);
     }
 
     @Test
+    // CASE: Change color of entire row once WHITE -> BRIGHT_RED
+    public void changeColorEntireRowSingle() {
+        GraphghanSquare[][] squares = graphghan1.getSquares();
 
-    void changeColorEntireColumnSingle() {
-        GraphghanSquare controlSquare1 = graphghan1.getSquare(0,0);
-        GraphghanSquare testSquare1 = graphghan1.getSquare(0,4);
-        GraphghanSquare testSquare2 = graphghan1.getSquare(9,4);
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                if (j == 5) {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+                else {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+            }
+        }
 
-        Color color1 = controlSquare1.getColor();
-        Color color2 = testSquare1.getColor();
-        Color color3 = testSquare2.getColor();
+        graphghan1.changeColorEntireRow(Color.BRIGHT_RED, 5);
 
-        graphghan1.changeColorEntireColumn(Color.BRIGHT_RED, 4);
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                if (j == 5) {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.BRIGHT_RED, squares[j][i].getColor());
+                }
+                else {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+            }
+        }
 
-        Color color4 = controlSquare1.getColor();
-        Color color5 = testSquare1.getColor();
-        Color color6 = testSquare2.getColor();
+    }
 
-        assertEquals(Color.WHITE, color1);
-        assertEquals(Color.WHITE, color2);
-        assertEquals(Color.WHITE, color3);
-        assertEquals(Color.WHITE, color4);
-        assertEquals(Color.BRIGHT_RED, color5);
-        assertEquals(Color.BRIGHT_RED, color6);
+    @Test
+    // CASE: Change color of entire row many times WHITE -> BRIGHT_RED -> DARK_CYAN
+    public void changeColorEntireRowMultiple() {
+        GraphghanSquare[][] squares = graphghan1.getSquares();
+
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                if (j == 5) {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+                else {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+            }
+        }
+
+        graphghan1.changeColorEntireRow(Color.BRIGHT_RED, 5);
+
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                if (j == 5) {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.BRIGHT_RED, squares[j][i].getColor());
+                }
+                else {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+            }
+        }
+
+        graphghan1.changeColorEntireRow(Color.DARK_CYAN, 5);
+
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                if (j == 5) {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.DARK_CYAN, squares[j][i].getColor());
+                }
+                else {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+            }
+        }
+
+    }
+
+
+    @Test
+    // CASE: Change color of entire column once WHITE -> BRIGHT_RED
+    public void changeColorEntireColumnSingle() {
+        GraphghanSquare[][] squares = graphghan1.getSquares();
+
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                if (i == 5) {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+                else {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+            }
+        }
+
+        graphghan1.changeColorEntireColumn(Color.BRIGHT_RED, 5);
+
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                if (i == 5) {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.BRIGHT_RED, squares[j][i].getColor());
+                }
+                else {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+            }
+        }
+
+    }
+
+    @Test
+    // CASE: Change color of entire column many times WHITE -> BRIGHT_RED -> DARK_CYAN
+    public void changeColorEntireColumnMultiple() {
+        GraphghanSquare[][] squares = graphghan1.getSquares();
+
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                if (i == 5) {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+                else {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+            }
+        }
+
+        graphghan1.changeColorEntireColumn(Color.BRIGHT_RED, 5);
+
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                if (i == 5) {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.BRIGHT_RED, squares[j][i].getColor());
+                }
+                else {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+            }
+        }
+
+        graphghan1.changeColorEntireColumn(Color.DARK_CYAN, 5);
+
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                if (i == 5) {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.DARK_CYAN, squares[j][i].getColor());
+                }
+                else {
+                    assertEquals(i, squares[j][i].getColumn());
+                    assertEquals(j, squares[j][i].getRow());
+                    assertEquals(Color.WHITE, squares[j][i].getColor());
+                }
+            }
+        }
+
+        graphghan1.changeColorEntireRow(Color.DARK_CYAN, 5);
+
     }
 
 }

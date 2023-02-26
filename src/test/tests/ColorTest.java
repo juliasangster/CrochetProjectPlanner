@@ -10,26 +10,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ColorTest {
 
-    Color black;
-    Color darkRed;
-    Color darkGreen;
-    Color darkYellow;
-    Color darkBlue;
-    Color darkMagenta;
-    Color darkCyan;
-    Color darkWhite;
-    Color brightBlack;
-    Color brightRed;
-    Color brightGreen;
-    Color brightYellow;
-    Color brightBlue;
-    Color brightMagenta;
-    Color brightCyan;
-    Color white;
+    private Color black;
+    private Color darkRed;
+    private Color darkGreen;
+    private Color darkYellow;
+    private Color darkBlue;
+    private Color darkMagenta;
+    private Color darkCyan;
+    private Color darkWhite;
+    private Color brightBlack;
+    private Color brightRed;
+    private Color brightGreen;
+    private Color brightYellow;
+    private Color brightBlue;
+    private Color brightMagenta;
+    private Color brightCyan;
+    private Color white;
 
     @BeforeEach
 
-    void colorTestSetup() {
+    public void colorTestSetup() {
         black = Color.BLACK;
         darkRed = Color.DARK_RED;
         darkGreen = Color.DARK_GREEN;
@@ -50,35 +50,35 @@ public class ColorTest {
 
     @Test
     // CASE: getColorCode() called on Color.BLACK
-     void getColorCodeTestBlack() {
+    public void getColorCodeTestBlack() {
         assertEquals("\u001b[30m",
                 black.getColorCode());
     }
 
     @Test
     // CASE: getColorCode() called on Color.DARK_RED
-    void getColorCodeTestDarkRed() {
+    public void getColorCodeTestDarkRed() {
         assertEquals("\u001b[31m",
                 darkRed.getColorCode());
     }
 
     @Test
     // CASE: getColorCode() called on Color.DARK_GREEN
-    void getColorCodeTestDarkGreen() {
+    public void getColorCodeTestDarkGreen() {
         assertEquals("\u001b[32m",
                 darkGreen.getColorCode());
     }
 
     @Test
     // CASE: getColorCode() called on Color.DARK_YELLOW
-    void getColorCodeTestDarkYellow() {
+    public void getColorCodeTestDarkYellow() {
         assertEquals("\u001b[33m",
                 darkYellow.getColorCode());
     }
 
     @Test
     // CASE: getColorCode() called on Color.DARK_BLUE
-    void getColorCodeTestDarkBlue() {
+    public void getColorCodeTestDarkBlue() {
         assertEquals("\u001b[34m",
                 darkBlue.getColorCode());
 
@@ -86,7 +86,7 @@ public class ColorTest {
 
     @Test
     // CASE: getColorCode() called on Color.DARK_MAGENTA
-    void getColorCodeTestDarkMagenta() {
+    public void getColorCodeTestDarkMagenta() {
         assertEquals("\u001b[35m",
                 darkMagenta.getColorCode());
 
@@ -94,7 +94,7 @@ public class ColorTest {
 
     @Test
     // CASE: getColorCode() called on Color.DARK_CYAN
-    void getColorCodeTestDarkCyan() {
+    public void getColorCodeTestDarkCyan() {
         assertEquals("\u001b[36m",
                 darkCyan.getColorCode());
 
@@ -102,7 +102,7 @@ public class ColorTest {
 
     @Test
     // CASE: getColorCode() called on Color.DARK_WHITE
-    void getColorCodeTestDarkWhite() {
+    public void getColorCodeTestDarkWhite() {
         assertEquals("\u001b[37m",
                 darkWhite.getColorCode());
 
@@ -110,14 +110,14 @@ public class ColorTest {
 
     @Test
     // CASE: getColorCode() called on Color.BRIGHT_BLACK
-    void getColorCodeTestBrightBlack() {
+    public void getColorCodeTestBrightBlack() {
         assertEquals("\u001b[90m",
                 brightBlack.getColorCode());
     }
 
     @Test
     // CASE: getColorCode() called on Color.BRIGHT_RED
-    void getColorCodeTestBrightRed() {
+    public void getColorCodeTestBrightRed() {
         assertEquals("\u001b[91m",
                 brightRed.getColorCode());
 
@@ -125,7 +125,7 @@ public class ColorTest {
 
     @Test
     // CASE: getColorCode() called on Color.BRIGHT_GREEN
-    void getColorCodeTestBrightGreen() {
+    public void getColorCodeTestBrightGreen() {
         assertEquals("\u001b[92m",
                 brightGreen.getColorCode());
 
@@ -133,35 +133,35 @@ public class ColorTest {
 
     @Test
     // CASE: getColorCode() called on Color.BRIGHT_YELLOW
-    void getColorCodeTestBrightYellow() {
+    public void getColorCodeTestBrightYellow() {
         assertEquals("\u001b[93m",
                 brightYellow.getColorCode());
     }
 
     @Test
     // CASE: getColorCode() called on Color.BRIGHT_BLUE
-    void getColorCodeTestBrightBlue() {
+    public void getColorCodeTestBrightBlue() {
         assertEquals("\u001b[94m",
                 brightBlue.getColorCode());
     }
 
     @Test
     // CASE: getColorCode() called on Color.BRIGHT_MAGENTA
-    void getColorCodeTestBrightMagenta() {
+    public void getColorCodeTestBrightMagenta() {
         assertEquals("\u001b[95m",
                 brightMagenta.getColorCode());
     }
 
     @Test
     // CASE: getColorCode() called on Color.BRIGHT_CYAN
-    void getColorCodeTestBrightCyan() {
+    public void getColorCodeTestBrightCyan() {
         assertEquals("\u001b[96m",
                 brightCyan.getColorCode());
     }
 
     @Test
     // CASE: getColorCode() called on Color.WHITE
-    void getColorCodeTestWhite() {
+    public void getColorCodeTestWhite() {
         assertEquals("\u001b[97m",
                 white.getColorCode());
     }

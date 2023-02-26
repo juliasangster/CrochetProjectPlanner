@@ -2,6 +2,7 @@ package ui;
 
 // SOURCES:
 //   - TellerApplication: https://github.students.cs.ubc.ca/CPSC210/TellerApp
+//       - Used to determine structure of many UI functions in this application
 
 import model.Color;
 import model.Graphghan;
@@ -11,7 +12,7 @@ import model.ProjectCollection;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Crochet Application Class: represents a state of a crochet application
+// CLASS COMMENT: represents a state of a crochet application
 // with a ProjectCollection and inputs via Scanner
 
 public class CrochetApp {
@@ -26,11 +27,36 @@ public class CrochetApp {
     }
 
     // MODIFIES: this
-    // EFFECTS:  Processes the user inputs from the main menu of
-    //           the crochet app
+    // EFFECTS:  initializes an empty Project Collection (list of projects),
+    //           and the Scanner object needed to run the application
+    private void setupCrochetApp() {
+        projects = new ProjectCollection();
+        input = new Scanner(System.in);
+        input.useDelimiter("\n");
+    }
+
+
+    // EFFECTS: Displays a welcome message
+    public static void welcomeMessage() {
+        System.out.println("\n\u001b[35m" + "Welcome to the crochet app!" + "\u001B[0m");
+        System.out.println("\u001b[35m" + "Please select from the following options:" + "\u001B[0m");
+    }
+
+    // EFFECTS: Displays a menu of main menu options for user
+    public static void startMenuOptions() {
+        System.out.println("\n\tn -> create new project");
+        System.out.println("\td -> delete an existing project");
+        System.out.println("\te -> edit a current project");
+        System.out.println("\tl -> see a list of all projects");
+        System.out.println("\tq -> quit");
+    }
+
+    // MODIFIES: this
+    // EFFECTS:  displays initial welcome. collects and processes the user inputs from the main menu of the
+    //           crochet application
     public void runCrochetApp() {
         boolean runApp = true;
-        String keyInput = null;
+        String keyInput;
 
         setupCrochetApp();
         welcomeMessage();
@@ -50,7 +76,7 @@ public class CrochetApp {
     }
 
     // MODIFIES: this
-    // EFFECTS:  processes user inputs from the main manu
+    // EFFECTS:  processes user inputs from the main menu
     public void processKeyInput(String keyInput) {
         if (keyInput.equals("n")) {
             newGraphghan();
@@ -63,34 +89,8 @@ public class CrochetApp {
         } else {
             System.out.println("Your choice is not valid.");
             System.out.println("Please select again");
-            startMenuOptions();
         }
     }
-
-    // MODIFIES: this
-    // EFFECTS:  initializes an empty Project Collection (list of projects),
-    //           and the Scanner object needed to run the application
-    private void setupCrochetApp() {
-        projects = new ProjectCollection();
-        input = new Scanner(System.in);
-        input.useDelimiter("\n");
-    }
-
-    // EFFECTS: Displays a welcome message
-    public static void welcomeMessage() {
-        System.out.println("\n\u001b[35m" + "Welcome to the crochet app!" + "\u001B[0m");
-        System.out.println("\u001b[35m" + "Please select from the following options:" + "\u001B[0m");
-    }
-
-    // EFFECTS: Displays a menu of main menu options for user
-    public static void startMenuOptions() {
-        System.out.println("\n\tn -> create new project");
-        System.out.println("\td -> delete an existing project");
-        System.out.println("\te -> edit a current project");
-        System.out.println("\tl -> see a list of all projects");
-        System.out.println("\tq -> quit");
-    }
-
 
     // EFFECTS:  Prints a single block character representing a Graphghan
     //           square to the console, in the associated color
@@ -107,25 +107,6 @@ public class CrochetApp {
         System.out.println(" ");
     }
 
-    // MODIFIES: this
-    // REQUIRES:
-    // EFFECTS:  processes a deletion of a graphghan. Prints success
-    //           message if successful, and failure message if
-    //           graphghan fails to be removed
-    private void deleteGraphghan() {
-        Graphghan selected = selectGraphghan();
-        String nameSelected = selected.getName();
-        boolean result = projects.removeProject(nameSelected);
-        assert !(projects.containsGivenProject(nameSelected));
-        if (result) {
-            System.out.println("Successfully removed" + nameSelected + "\n");
-        } else {
-            System.out.println("Could not remove" + nameSelected + "\n");
-            System.out.println("Please double-check list of projects\n");
-        }
-
-    }
-
     // REQUIRES: graphghan to print is not null
     // EFFECTS:  prints a coloured-block representation of the
     //           graphghan to the console
@@ -136,12 +117,34 @@ public class CrochetApp {
         }
     }
 
+    // REQUIRES: no graphghan with duplicate names in this.projects
     // MODIFIES: this
-    // EFFECTS:  processes the addition of a new project to the
-    //           project list.
-    //           handles exceptional cases (row/column < 1, and previous
-    //           name given) by printing error message to users
-    //           and not adding graphghan
+    // EFFECTS:  processes deletion of graphghan from this.projects. Prompts user to select graphghan by
+    //           name. Returns message indicating success of removal operation.
+    private void deleteGraphghan() {
+        try {
+            Graphghan selected = selectGraphghan();
+            String nameSelected = selected.getName();
+            boolean result = projects.removeProject(nameSelected);
+            assert !(projects.containsGivenProject(nameSelected));
+            if (result) {
+                System.out.println("Successfully removed " + nameSelected + "\n");
+            } else {
+                System.out.println("Could not remove " + nameSelected + "\n");
+                System.out.println("Please double-check list of projects\n");
+            }
+        } catch (Exception e) {
+            System.out.println("Could not remove\n");
+            System.out.println("Please double-check list of projects\n");
+        }
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS:  prompts user for a name, and number of columns and rows of a new project.
+    //           processes the addition of this new project to this.projects.
+    //           handles exceptional cases (rows/columns < 1, and previous
+    //           name given) by printing error message to users and not adding graphghan
     private void newGraphghan() {
         try {
             System.out.print("What would you like to name your new project?\n");
@@ -161,7 +164,6 @@ public class CrochetApp {
             projects.addProject(name, columns, rows);
 
             System.out.print("Your new graphghan " + name + " has been added to projects");
-
         } catch (Exception e) {
             this.input = new Scanner(System.in);
             System.out.print("Failed to add graphghan, please try again");
@@ -171,7 +173,7 @@ public class CrochetApp {
     }
 
     // EFFECTS: IF the project list is empty:
-    //              - returns an error message to user
+    //              - returns a message to user indicating the list is empty
     //          ELSE: prints information (name, dimensions) of all
     //          graphghans currently stored in projects
     private void viewGraphghanList() {
@@ -179,9 +181,9 @@ public class CrochetApp {
             System.out.println("There are no graphghans to show\n");
         } else {
             for (Graphghan g : projects) {
-                System.out.println("Graphghan:" + g.getName());
-                System.out.println("Dimensions " + g.getRows() + "X" + g.getColumns());
-                System.out.println("========================");
+                System.out.println("Graphghan: " + g.getName());
+                System.out.println("Dimensions " + g.getRows() + " X " + g.getColumns() + "\t[ROW X COL]");
+                System.out.println("============================");
             }
         }
         System.out.println("Returning you to the main menu");
@@ -190,9 +192,10 @@ public class CrochetApp {
     // EFFECTS: prompts the user to select a graphghan in the list
     //          and returns it.
     //          prints success message and graphghan once selected
-    private Graphghan selectGraphghan() {
+    private Graphghan selectGraphghan() throws Exception {
         String selection = ""; // forces entry into loop
         boolean runLoop = false;
+        int loopCounter = 0;
 
         while (!runLoop) {
             System.out.println("Please write the exact name of the project.");
@@ -202,6 +205,10 @@ public class CrochetApp {
             }
             selection = input.next();
             runLoop = projects.containsGivenProject(selection);
+            loopCounter++;
+            if (loopCounter >= MAX_CHOICE_LOOPS) {
+                throw new Exception();
+            }
         }
 
         System.out.println("You have selected" + selection);
@@ -214,19 +221,25 @@ public class CrochetApp {
     //              - returns a message that editing cannot be completed
     //          ELSE:
     //              - prompts the user to select a graphghan to edit and
-    //                then processes editing
+    //                then processes editing if selection successful
     private void editGraphghan() {
-        if (projects.isEmpty()) {
-            System.out.println("There are no graphghans to select. Please add a new project.");
-        } else {
-            Graphghan selectedGraphghan = selectGraphghan();
-            printGraphghan(selectedGraphghan);
-            editGraphghanAllOptions(selectedGraphghan);
+        try {
+            if (projects.isEmpty()) {
+                System.out.println("There are no graphghans to select. Please add a new project.");
+            } else {
+                Graphghan selectedGraphghan = selectGraphghan();
+                printGraphghan(selectedGraphghan);
+                editGraphghanAllOptions(selectedGraphghan);
+            }
+        } catch (Exception e) {
+            System.out.println("You failed to select a graphghan to edit.");
+            System.out.println("Returning to main menu.");
         }
     }
 
-    // EFFECTS: processes editing inputs and outputs to the console
-    //          while editing is occurring
+    // REQUIRES: selectedGraphghan is not null
+    // EFFECTS: processes editing inputs and outputs to the console while editing, after selecting
+    // graphghan ("e" selected from main menu)
     private void editGraphghanAllOptions(Graphghan selectedGraphghan) {
         editingOptions();
 
@@ -253,7 +266,7 @@ public class CrochetApp {
         System.out.println("You have selected to finish editing. Returning to main menu.");
     }
 
-    // EFFECTS: prints list of editing tool options
+    // EFFECTS: prints list of editing tool options (editing menu)
     private void editingOptions() {
         System.out.println("\t sqr -> Change colour of 1 square");
         System.out.println("\t row -> Change colour of 1 row");
@@ -263,8 +276,9 @@ public class CrochetApp {
         System.out.println("\t q   -> Quit editing");
     }
 
-    // EFFECTS: processes user inputs when in editing menu, including
-    //          reuse tool input
+    // REQUIRES: selectedGraphghan, editCommand is not null
+    // EFFECTS: processes user inputs when in editing menu when a repeated tool
+    //          has not yet been selected
     private void selectEditingTool(String editCommand, Graphghan selectedGraphghan) {
 
         boolean runLoop = true;
@@ -288,36 +302,39 @@ public class CrochetApp {
         }
     }
 
+    // REQUIRES: selectedGraphghan, editCommand is not null
+    // EFFECTS:  processes editing inputs and outputs for tools that the
+    //           user wants to repeatedly use without returning to editing main
+    //           menu.
     private String editingToolsThatRepeat(String editCommand, Graphghan selectedGraphghan) {
 
         boolean runLoop = true;
-        try {
-            while (runLoop) {
-                if (editCommand.equals("sqr")) {
-                    changeSquare(selectedGraphghan);
-                } else if (editCommand.equals("row")) {
-                    changeRow(selectedGraphghan);
-                } else if (editCommand.equals("col")) {
-                    changeColumn(selectedGraphghan);
-                } else if (editCommand.equals("fil")) {
-                    fillGraphghan(selectedGraphghan);
-                } else if (editCommand.equals("opt")) {
-                    seeColourOptions();
-                }
-                System.out.println("Use same tool?");
-                runLoop = continueOrStop();
+
+        while (runLoop) {
+            if (editCommand.equals("sqr")) {
+                changeSquare(selectedGraphghan);
+            } else if (editCommand.equals("row")) {
+                changeRow(selectedGraphghan);
+            } else if (editCommand.equals("col")) {
+                changeColumn(selectedGraphghan);
+            } else if (editCommand.equals("fil")) {
+                fillGraphghan(selectedGraphghan);
+            } else if (editCommand.equals("opt")) {
+                seeColourOptions();
             }
-        } catch (Exception e) {
-            runLoop = false;
+            System.out.println("Use same tool?");
+            runLoop = continueOrStop();
         }
         return "q";
     }
 
     // REQUIRES: selectedGraphghan is not null
     // MODIFIES: this
-    // EFFECTS:  prompts user to select color and row of the
-    //           selectedGraphghan.
-    //           tries
+    // EFFECTS:  processes a single-square color change to selected Graphghan
+    //           prompts user for color and row/column index input
+    //           handles all exceptional cases by asking user to retry operation if
+    //           inputs would cause error in downstream methods and throwing checked exception
+    //           prints representation of graphghan after operation succeeded/failed
     private void changeSquare(Graphghan selectedGraphghan) {
 
         try {
@@ -330,11 +347,16 @@ public class CrochetApp {
             selectedGraphghan.changeColorSingleSquare(color, row, column);
         } catch (Exception e) {
             System.out.println("Error changing, please try again");
+        } finally {
+            printGraphghan(selectedGraphghan);
         }
-        printGraphghan(selectedGraphghan);
     }
 
-    // TODO: MIGHT WANT EXCEPTION HANDLING HERE
+    // EFFECTS: prompts user to select a yes/no input for continuing an operation.
+    //          if user inputs "Y" or "y", return true
+    //          if user inputs "N" or "n", return false
+    //          if user fails to select an appropriate operation for more than
+    //          the designated maximum (MAX_CHOICE_LOOPS), returns false
     private boolean continueOrStop() {
 
         for (int loopCount = 0; loopCount < MAX_CHOICE_LOOPS; loopCount++) {
@@ -353,6 +375,10 @@ public class CrochetApp {
         return false;
     }
 
+    // EFFECTS: prompts user to select a color from the ANSI color options
+    //          if user appropriately picks a color, return color
+    //          if user fails to select an appropriate operation for more than
+    //          the designated maximum (MAX_CHOICE_LOOPS), throws checked exception
     private Color selectColor() throws Exception {
 
         String colorChoice = ""; // forces entry into loop
@@ -379,6 +405,13 @@ public class CrochetApp {
         return output;
     }
 
+    // REQUIRES: selectedGraphghan is not null
+    // MODIFIES: this
+    // EFFECTS:  processes a single-row color change to selectedGraphghan
+    //           prompts user for color and row index input
+    //           handles all exceptional cases by asking user to retry operation if
+    //           inputs would cause error in downstream methods and throwing checked exception
+    //           prints representation of graphghan after operation succeeded/failed
     private void changeRow(Graphghan selectedGraphghan) {
         try {
             Color color = selectColor();
@@ -389,10 +422,18 @@ public class CrochetApp {
             selectedGraphghan.changeColorEntireRow(color, row);
         } catch (Exception e) {
             System.out.println("Error changing, please try again");
+        } finally {
+            printGraphghan(selectedGraphghan);
         }
-        printGraphghan(selectedGraphghan);
     }
 
+    // REQUIRES: selectedGraphghan is not null
+    // MODIFIES: this
+    // EFFECTS:  processes a single-column color change to selectedGraphghan
+    //           prompts user for color and column index input
+    //           handles all exceptional cases by asking user to retry operation if
+    //           inputs would cause error in downstream methods and throwing checked exception
+    //           prints representation of graphghan after operation succeeded/failed
     private void changeColumn(Graphghan selectedGraphghan) {
         try {
             Color color = selectColor();
@@ -403,10 +444,18 @@ public class CrochetApp {
             selectedGraphghan.changeColorEntireColumn(color, col);
         } catch (Exception e) {
             System.out.println("Error changing, please try again");
+        } finally {
+            printGraphghan(selectedGraphghan);
         }
-        printGraphghan(selectedGraphghan);
     }
 
+    // REQUIRES: selectedGraphghan is not null
+    // MODIFIES: this
+    // EFFECTS:  processes a full color change to selectedGraphghan
+    //           prompts user for color
+    //           handles exceptional case of failing to select color by asking user to retry operation if
+    //           inputs would cause error in downstream methods and throwing checked exception
+    //           prints representation of graphghan after operation succeeded/failed
     private void fillGraphghan(Graphghan selectedGraphghan) {
         try {
             Color color = selectColor();
@@ -418,12 +467,15 @@ public class CrochetApp {
         }
     }
 
+    // EFFECTS: prints a list of all ANSI color options available to select for graphghan
+    //          squares to the console in their associated color.
     private void seeColourOptions() {
         for (Color color : Color.values()) {
             System.out.println(color.getColorCode() + color.name() + "⬛ " + "\u001B[0m");
         }
     }
 
+    // EFFECTS: processes the row index input for all color-change operations
     private int getRowInput() {
         System.out.println("What row?");
         int row = input.nextInt();
@@ -431,6 +483,7 @@ public class CrochetApp {
         return row;
     }
 
+    // EFFECTS: processes the column index input for all color-change operations
     private int getColumnInput() {
         System.out.println("What column? ");
         int column = input.nextInt();

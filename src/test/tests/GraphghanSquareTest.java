@@ -22,14 +22,14 @@ public class GraphghanSquareTest {
 
     @BeforeEach
 
-    void graphghanSquareTestSetup() {
+    public void graphghanSquareTestSetup() {
         graphghanSquare1 = new GraphghanSquare(TEST_ROW_1,TEST_COLUMN_1);
         graphghanSquare2 = new GraphghanSquare(TEST_ROW_2, TEST_COLUMN_2);
     }
 
     @Test
-
-    void graphghanSquareConstructorTest() {
+    // CASE: Typical inputs for graphghan square construction
+    public void graphghanSquareConstructorTest() {
 
         assertEquals(TEST_ROW_1, graphghanSquare1.getRow());
         assertEquals(TEST_COLUMN_1, graphghanSquare1.getColumn());
@@ -42,8 +42,8 @@ public class GraphghanSquareTest {
     }
 
     @Test
-
-    void changeColorTestSingle() {
+    // CASE: Color change successful from WHITE -> BLACK
+    public void changeColorTestSingle() {
         Color originalColor = graphghanSquare1.getColor();
         graphghanSquare1.changeColor(Color.BLACK);
         Color newColor = graphghanSquare1.getColor();
@@ -52,8 +52,8 @@ public class GraphghanSquareTest {
     }
 
     @Test
-
-    void changeColorTestMultiple() {
+    // CASE: Color change successful from WHITE -> BLACK -> DARK_BLUE
+    public void changeColorTestMultiple() {
         Color originalColor = graphghanSquare1.getColor();
         graphghanSquare1.changeColor(Color.BLACK);
         Color newColor1 = graphghanSquare1.getColor();
@@ -66,8 +66,8 @@ public class GraphghanSquareTest {
     }
 
     @Test
-
-    void changeColorTestMultipleToWhite() {
+    // CASE: Color change successful from WHITE -> BLACK -> WHITE
+    public void changeColorTestMultipleToWhite() {
         Color originalColor = graphghanSquare1.getColor();
         graphghanSquare1.changeColor(Color.BLACK);
         Color newColor1 = graphghanSquare1.getColor();
@@ -81,14 +81,14 @@ public class GraphghanSquareTest {
 
 
     @Test
-
-    void isGivenColorTestTrueCase() {
+    // CASE: isGivenColor TRUE case
+    public void isGivenColorTestTrueCase() {
         assertTrue(graphghanSquare1.isGivenColor(Color.WHITE));
     }
 
     @Test
-
-    void isGivenColorTestFalseCase() {
+    // CASE: isGivenColor FALSE case
+    public void isGivenColorTestFalseCase() {
         assertFalse(graphghanSquare1.isGivenColor(Color.BLACK));
     }
 }

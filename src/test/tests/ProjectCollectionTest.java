@@ -13,31 +13,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ProjectCollectionTest {
 
-    ProjectCollection projectCollection;
+    private ProjectCollection projectCollection;
 
-    final static String TEST_STRING_1 = "Test";
-    final static String TEST_STRING_2 = "WideBlanket";
-    final static String TEST_STRING_3 = "NarrowBlanket";
-    final static String TEST_STRING_4 = "Quiz";
+    private final static String TEST_STRING_1 = "Test";
+    private final static String TEST_STRING_2 = "WideBlanket";
+    private final static String TEST_STRING_3 = "NarrowBlanket";
+    private final static String TEST_STRING_4 = "Quiz";
 
-    final static int TEST_ROW_1 = 10;
-    final static int TEST_COL_1 = 10;
+    private final static int TEST_ROW_1 = 10;
+    private final static int TEST_COL_1 = 10;
 
-    final static int TEST_ROW_2 = 10;
-    final static int TEST_COL_2 = 15;
+    private final static int TEST_ROW_2 = 10;
+    private final static int TEST_COL_2 = 15;
 
-    final static int TEST_ROW_3 = 20;
-    final static int TEST_COL_3 = 10;
+    private final static int TEST_ROW_3 = 20;
+    private final static int TEST_COL_3 = 10;
 
 
     @BeforeEach
-    void projectCollectionTestSetup() {
+    public void projectCollectionTestSetup() {
         projectCollection = new ProjectCollection();
     }
 
     @Test
-
-    void addProjectTestEmptyListSingle() {
+    // CASE: add project -- list Empty -- try adding once
+    public void addProjectTestEmptyListSingle() {
         boolean result = projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
         assertTrue(result);
 
@@ -50,8 +50,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void addProjectTestEmptyListMultiple() {
+    // CASE: add project -- list Empty -- try adding multiple times
+    public void addProjectTestEmptyListMultiple() {
         boolean result1 = projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
         boolean result2 = projectCollection.addProject(TEST_STRING_2,TEST_ROW_2,TEST_COL_2);
         assertTrue(result1);
@@ -69,8 +69,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void addProjectTestNamePrevGivenSingle() {
+    // CASE: add project -- list non-empty and contains name -- try adding once
+    public void addProjectTestNamePrevGivenSingle() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
 
         boolean result = projectCollection.addProject(TEST_STRING_1,TEST_ROW_2,TEST_COL_3);
@@ -82,8 +82,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void addProjectTestNamePrevGivenMult() {
+    // CASE: add project -- list non-empty and contains name -- try adding multiple times
+    public void addProjectTestNamePrevGivenMult() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
 
         boolean result1 = projectCollection.addProject(TEST_STRING_1,TEST_ROW_2,TEST_COL_3);
@@ -96,8 +96,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void addProjectTestSuccessSingle() {
+    // CASE: add project -- list non-empty and adding succeeds -- try adding once
+    public void addProjectTestSuccessSingle() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
 
         boolean result1 = projectCollection.addProject(TEST_STRING_2,TEST_ROW_2,TEST_COL_2);
@@ -113,8 +113,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void addProjectTestSuccessMultiple() {
+    // CASE: add project -- list non-empty and adding succeeds -- try adding multiple different
+    public void addProjectTestSuccessMultiple() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
 
         boolean result1 = projectCollection.addProject(TEST_STRING_2,TEST_ROW_2,TEST_COL_2);
@@ -137,8 +137,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void removeProjectTestEmptyListSingle() {
+    // CASE: remove project -- list empty -- try removing once
+    public void removeProjectTestEmptyListSingle() {
         boolean result = projectCollection.removeProject(TEST_STRING_1);
         assertFalse(result);
         assertEquals(0, projectCollection.size());
@@ -146,8 +146,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void removeProjectTestEmptyListMultiple() {
+    // CASE: remove project -- list empty -- try removing multiple times
+    public void removeProjectTestEmptyListMultiple() {
         boolean result1 = projectCollection.removeProject(TEST_STRING_1);
         boolean result2 = projectCollection.removeProject(TEST_STRING_1);
         assertFalse(result1);
@@ -157,8 +157,9 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void removeProjectTestInListSingle() {
+    // CASE: remove project -- list non-empty and contains project with given name
+    //       -- try removing multiple once
+    public void removeProjectTestInListSingle() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
 
         int originalSize = projectCollection.size();
@@ -177,8 +178,9 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void removeProjectTestInListMultiple() {
+    // CASE: remove project -- list non-empty and contains project with given name
+    //       -- try removing multiple times
+    public void removeProjectTestInListMultiple() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_2,TEST_ROW_2,TEST_COL_2);
 
@@ -201,8 +203,9 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void removeProjectTestNotInListSingle() {
+    // CASE: remove project -- list non-empty and does not contain project with given name
+    //       -- try removing once
+    public void removeProjectTestNotInListSingle() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_2,TEST_ROW_2,TEST_COL_2);
 
@@ -221,8 +224,9 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void removeProjectTestNotInListMultiple() {
+    // CASE: remove project -- list non-empty and does not contain project with given name
+    //       -- try removing multiple times
+    public void removeProjectTestNotInListMultiple() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_2,TEST_ROW_2,TEST_COL_2);
 
@@ -245,8 +249,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void getAllNamesTestEmptyList() {
+    // CASE: get all names - list is empty
+    public void getAllNamesTestEmptyList() {
 
         ArrayList<String> result = projectCollection.getAllNames();
 
@@ -257,8 +261,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void getAllNamesTestSingleInList() {
+    // CASE: get all names - list contains a single graphghan
+    public void getAllNamesTestSingleInList() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
 
         ArrayList<String> sampleResult = new ArrayList<>();
@@ -272,8 +276,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void getAllNamesTestManyInList() {
+    // CASE: get all names - list contains many graphghans
+    public void getAllNamesTestManyInList() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_2,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_3,TEST_ROW_1,TEST_COL_1);
@@ -291,8 +295,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void containsGivenProjectTestEmptyList() {
+    // CASE: contains given project - with empty list
+    public void containsGivenProjectTestEmptyList() {
 
         boolean result = projectCollection.containsGivenProject(TEST_STRING_1);
 
@@ -301,8 +305,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void containsGivenProjectTestOnlyItemInList() {
+    // CASE: contains given project - the item searched for is only item in list
+    public void containsGivenProjectTestOnlyItemInList() {
 
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
 
@@ -312,8 +316,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void containsGivenProjectTestItemsInListSuccess() {
+    // CASE: contains given project - TRUE case, not only item in list
+    public void containsGivenProjectTestItemsInListSuccess() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_2,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_3,TEST_ROW_1,TEST_COL_1);
@@ -325,8 +329,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void containsGivenProjectTestItemsInListFail() {
+    // CASE: contains given project - FALSE case, other items in list
+    public void containsGivenProjectTestItemsInListFail() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_2,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_3,TEST_ROW_1,TEST_COL_1);
@@ -337,16 +341,16 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void getGraphghanSpecificNameTestEmptyList() {
+    // CASE: get graphghan specific name - list is empty
+    public void getGraphghanSpecificNameTestEmptyList() {
         Graphghan g = projectCollection.getGraphghanSpecificName(TEST_STRING_1);
 
         assertNull(g);
     }
 
     @Test
-
-    void getGraphghanSpecificNameTestInListSingle() {
+    // CASE: get graphghan specific name - list only contains searched for graphghan
+    public void getGraphghanSpecificNameTestInListSingle() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_2,TEST_ROW_2,TEST_COL_2);
         projectCollection.addProject(TEST_STRING_3,TEST_ROW_3,TEST_COL_3);
@@ -362,8 +366,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void getGraphghanSpecificNameTestInListMultiple() {
+    // CASE: get graphghan specific name - search twice and both are in list
+    public void getGraphghanSpecificNameTestInListMultiple() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_2,TEST_ROW_2,TEST_COL_2);
         projectCollection.addProject(TEST_STRING_3,TEST_ROW_3,TEST_COL_3);
@@ -383,8 +387,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void getGraphghanSpecificNameTestNotInListSingle() {
+    // CASE: get graphghan specific name - search once, and it isn't in non-empty list
+    public void getGraphghanSpecificNameTestNotInListSingle() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_2,TEST_ROW_2,TEST_COL_2);
         projectCollection.addProject(TEST_STRING_3,TEST_ROW_3,TEST_COL_3);
@@ -395,8 +399,8 @@ public class ProjectCollectionTest {
     }
 
     @Test
-
-    void getGraphghanSpecificNameTestNotInListMultiple() {
+    // CASE: get graphghan specific name - search multiple, and it isn't in non-empty list
+    public void getGraphghanSpecificNameTestNotInListMultiple() {
         projectCollection.addProject(TEST_STRING_1,TEST_ROW_1,TEST_COL_1);
         projectCollection.addProject(TEST_STRING_2,TEST_ROW_2,TEST_COL_2);
         projectCollection.addProject(TEST_STRING_3,TEST_ROW_3,TEST_COL_3);
@@ -407,9 +411,5 @@ public class ProjectCollectionTest {
         assertNull(g1);
         assertNull(g2);
     }
-
-
-
-
 
 }

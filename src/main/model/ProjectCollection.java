@@ -2,23 +2,19 @@ package model;
 
 import java.util.ArrayList;
 
-// CLASS COMMENT: Class representing a list of crochet projects
+// CLASS COMMENT: Class representing a list of crochet projects. Extended from ArrayList<Graphghan> in order to
+// inherit built-in ArrayList methods. See: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 
 public class ProjectCollection extends ArrayList<Graphghan> {
 
-    // TODO: FIX EFFECTS:
+    // REQUIRES: rows >= 1 && columns >= 1
     // MODIFIES: this
-    // EFFECTS:  if the list of projects is empty:
-    //            - constructs and adds new graphghan to project collection
-    //              with given name, rows, and columns
-    //           else:
-    //            - if the list already contains a graphghan with the given name
-    //                - return false
-    //            - else:
-    //              - constructs and adds new graphghan to project collection with
-    //                given name, rows, columns
-    //              - return true
-    //
+    // EFFECTS:  IF: the list of projects contains a project with the given name
+    //               - return false
+    //           ELSE:
+    //               - construct new graphghan with given name, rows, and columns
+    //               - add this new graphghan to ProjectCollection
+    //               - return true
     public boolean addProject(String name, int rows, int columns) {
 
         Graphghan newProject;
@@ -31,12 +27,11 @@ public class ProjectCollection extends ArrayList<Graphghan> {
         return true;
     }
 
+    // REQUIRES: no graphghans with duplicate names in this
     // MODIFIES: this
-    // EFFECTS:  if there is a project with the given name in the list:
-    //              - removes project with given name from projects
-    //              - returns true
-    //           else:
-    //              - returns false
+    // EFFECTS:  IF: the list is not empty and there is a graphghan with the same name in this
+    //               - remove the graphghan with the same name from the list and return true
+    //           ELSE: - return false
     public boolean removeProject(String name) {
         for (Graphghan g: this) {
             if (g.getName().equals(name)) {
@@ -47,8 +42,7 @@ public class ProjectCollection extends ArrayList<Graphghan> {
         return false;
     }
 
-    // EFFECTS: Returns a list of String that contains all
-    //          graphghan names. Does not add doubles if they exist.
+    // EFFECTS: Returns a list that contains the name of all graphghans currently in this
     public ArrayList<String> getAllNames() {
 
         ArrayList<String> result = new ArrayList<>();
@@ -61,21 +55,17 @@ public class ProjectCollection extends ArrayList<Graphghan> {
         return result;
     }
 
-    // EFFECTS: returns true if the given project with name
-    //          is contained in the list of projects.
-    //          returns false otherwise.
+    // EFFECTS: IF: there is a project in this with the given name, returns true.
+    //          ELSE: returns false.
     public boolean containsGivenProject(String name) {
         ArrayList<String> allNames = this.getAllNames();
         boolean result = allNames.contains(name);
         return result;
     }
 
-    // EFFECTS: IF the list is empty:
-    //           - return null
-    //          ELSE:
-    //           - IF there is a graphghan with the given name
-    //               - returns the graphghan object with given name
-    //           - ELSE return null
+    // EFFECTS:  IF: the list is not empty and there is a graphghan with the same name in this
+    //               - return the graphghan object with the same name as given name
+    //           ELSE: - return a null graphghan object
     public Graphghan getGraphghanSpecificName(String name) {
 
         Graphghan desiredGraphghan = null;
