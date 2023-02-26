@@ -5,10 +5,9 @@ import model.GraphghanSquare;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-// CLASS COMMENT:
+// CLASS COMMENT: Testing suite for model.GraphghanSquare class
 
 public class GraphghanSquareTest {
 
@@ -83,8 +82,13 @@ public class GraphghanSquareTest {
 
     @Test
 
-    void isGivenColorTestWhite() {
+    void isGivenColorTestTrueCase() {
         assertTrue(graphghanSquare1.isGivenColor(Color.WHITE));
     }
 
+    @Test
+
+    void isGivenColorTestFalseCase() {
+        assertFalse(graphghanSquare1.isGivenColor(Color.BLACK));
+    }
 }

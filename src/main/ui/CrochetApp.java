@@ -8,6 +8,7 @@ import model.Graphghan;
 import model.GraphghanSquare;
 import model.ProjectCollection;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 // Crochet Application Class: represents a state of a crochet application
@@ -138,7 +139,7 @@ public class CrochetApp {
     // MODIFIES: this
     // EFFECTS:  processes the addition of a new project to the
     //           project list.
-    //           handles exceptional cases (row/column < 1, and empty
+    //           handles exceptional cases (row/column < 1, and previous
     //           name given) by printing error message to users
     //           and not adding graphghan
     private void newGraphghan() {
@@ -151,7 +152,9 @@ public class CrochetApp {
             System.out.print("How many columns?\n");
             int columns = input.nextInt();
 
-            if (rows < 1 || columns < 1 || name.equals("")) {
+            ArrayList<String> namesGiven = projects.getAllNames();
+
+            if (rows < 1 || columns < 1 || namesGiven.contains(name)) {
                 throw new Exception();
             }
 
@@ -275,7 +278,6 @@ public class CrochetApp {
                     runLoop = continueOrStop();
                 } else if (editCommand.equals("q")) {
                     runLoop = false;
-                    continue;
                 } else {
                     System.out.println("Selection was not valid. Try again?");
                     runLoop = continueOrStop();

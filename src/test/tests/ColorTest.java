@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-// CLASS COMMENT:
+// CLASS COMMENT: Testing suite for model.Color class
 
 public class ColorTest {
 

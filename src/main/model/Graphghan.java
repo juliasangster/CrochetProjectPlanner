@@ -71,8 +71,7 @@ public class Graphghan {
 
     }
 
-    // TODO: Piazza post: need more in modifies (this.squares[row][col])
-    // MODIFIES: this
+    // MODIFIES: this.squares
     // REQUIRES: row <= (this.rows - 1)
     //           column <= (this.columns - 1)
     // EFFECTS:  Changes the color of the graphghan at the given index
@@ -82,7 +81,7 @@ public class Graphghan {
         graphghanSquare.changeColor(color);
     }
 
-    // MODIFIES: this
+    // MODIFIES: this.squares
     // REQUIRES: row <= (this.rows - 1)
     // EFFECTS: Changes all graphghan squares in the given row
     //          to the given color
@@ -96,7 +95,7 @@ public class Graphghan {
         }
     }
 
-    // MODIFIES: this
+    // MODIFIES: this.squares
     // REQUIRES: column <= (this.columns - 1)
     // EFFECTS: Changes all graphghan squares in the given column
     //          to the given color
@@ -110,7 +109,7 @@ public class Graphghan {
         }
     }
 
-    // MODIFIES: this
+    // MODIFIES: this.squares
     // EFFECTS: Changes the colour of all graphghan squares
     //          a graphghan to the given color
     public void changeColorEntireGraphghan(Color color) {

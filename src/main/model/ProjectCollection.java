@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class ProjectCollection extends ArrayList<Graphghan> {
 
+    // TODO: FIX EFFECTS:
     // MODIFIES: this
     // EFFECTS:  if the list of projects is empty:
     //            - constructs and adds new graphghan to project collection
@@ -18,32 +19,18 @@ public class ProjectCollection extends ArrayList<Graphghan> {
     //                given name, rows, columns
     //              - return true
     //
-    public boolean addProject(String name, int rows, int columns) throws Exception {
+    public boolean addProject(String name, int rows, int columns) {
 
         Graphghan newProject;
 
-        if (this.isEmpty()) {
-            newProject = new Graphghan(name, rows, columns);
-            this.add(newProject);
-            return true;
-        } else {
-            for (Graphghan g: this) {
-                if (g.getName().equals(name)) {
-                    throw new Exception();
-                } else {
-                    newProject = new Graphghan(name, rows, columns);
-                    this.add(newProject);
-                    return true;
-                }
-            }
+        if (this.getAllNames().contains(name)) {
+            return false;
         }
-
-        return false;
-
+        newProject = new Graphghan(name, rows, columns);
+        this.add(newProject);
+        return true;
     }
 
-    // REQUIRES: given name has been previously assigned to a graphghan object
-    //           stored within the projects array list
     // MODIFIES: this
     // EFFECTS:  if there is a project with the given name in the list:
     //              - removes project with given name from projects
@@ -63,14 +50,14 @@ public class ProjectCollection extends ArrayList<Graphghan> {
     // EFFECTS: Returns a list of String that contains all
     //          graphghan names. Does not add doubles if they exist.
     public ArrayList<String> getAllNames() {
-        ArrayList<String> result;
-        result = new ArrayList<String>();
-        if (!this.isEmpty()) {
-            for (Graphghan g : this) {
-                String name = g.getName();
-                result.add(name);
-            }
+
+        ArrayList<String> result = new ArrayList<>();
+
+        for (Graphghan g : this) {
+            String name = g.getName();
+            result.add(name);
         }
+
         return result;
     }
 
@@ -93,15 +80,10 @@ public class ProjectCollection extends ArrayList<Graphghan> {
 
         Graphghan desiredGraphghan = null;
 
-        if (this.isEmpty()) {
-            return null;
-        } else {
-            for (Graphghan g : this) {
-                if (g.getName().equals(name)) {
-                    desiredGraphghan = g;
-                }
+        for (Graphghan g : this) {
+            if (g.getName().equals(name)) {
+                desiredGraphghan = g;
             }
-
         }
 
         return desiredGraphghan;

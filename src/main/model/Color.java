@@ -1,9 +1,7 @@
 package model;
 
 // CLASS COMMENT: Class representing all ANSI representable
-// console colours, with associated colourCodes
-
-// TODO: Ask if I should move this to UI, and if so how I should split it
+// console colours, with associated ANSI color codes
 
 public enum Color {
     BLACK("\u001b[30m"),

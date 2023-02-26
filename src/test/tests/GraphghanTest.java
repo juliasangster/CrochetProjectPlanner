@@ -6,9 +6,10 @@ import model.GraphghanSquare;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-// CLASS COMMENT:
+// CLASS COMMENT: Testing suite for model.Graphghan class
+
 
 public class GraphghanTest {
 
@@ -47,30 +48,20 @@ public class GraphghanTest {
 
         int size = graphghan1.getSize();
 
-        GraphghanSquare first = graphghan1.getSquare(0,0);
-        GraphghanSquare last = graphghan1.getSquare(TEST_ROW_1-1,TEST_COL_1-1);
+        GraphghanSquare[][] squares = graphghan1.getSquares();
 
-        Color color1 = first.getColor();
-        Color color2 = last.getColor();
-
-        int rowIndex1 = first.getRow();
-        int colIndex1 = first.getColumn();
-
-        int rowIndex2 = last.getRow();
-        int colIndex2 = last.getColumn();
+        for (int i = 0; i < TEST_COL_1; i++) {
+            for (int j = 0; j < TEST_ROW_1; j++) {
+                assertEquals(i, squares[j][i].getColumn());
+                assertEquals(j, squares[j][i].getRow());
+                assertEquals(Color.WHITE, squares[j][i].getColor());
+            }
+        }
 
         assertEquals(TEST_STRING_1, name);
         assertEquals(TEST_ROW_1, rows);
         assertEquals(TEST_COL_1, columns);
         assertEquals(TEST_ROW_1*TEST_COL_1, size);
-        assertEquals(Color.WHITE, color1);
-        assertEquals(Color.WHITE, color2);
-        assertEquals(0, rowIndex1);
-        assertEquals(0, colIndex1);
-        assertEquals(TEST_ROW_1-1, rowIndex2);
-        assertEquals(TEST_COL_1-1, colIndex2);
-
-
     }
 
     @Test
@@ -82,28 +73,20 @@ public class GraphghanTest {
 
         int size = graphghan2.getSize();
 
-        GraphghanSquare first = graphghan2.getSquare(0,0);
-        GraphghanSquare last = graphghan2.getSquare(TEST_ROW_2-1,TEST_COL_2-1);
+        GraphghanSquare[][] squares = graphghan2.getSquares();
 
-        Color color1 = first.getColor();
-        Color color2 = last.getColor();
-
-        int rowIndex1 = first.getRow();
-        int colIndex1 = first.getColumn();
-
-        int rowIndex2 = last.getRow();
-        int colIndex2 = last.getColumn();
+        for (int i = 0; i < TEST_COL_2; i++) {
+            for (int j = 0; j < TEST_ROW_2; j++) {
+                assertEquals(i, squares[j][i].getColumn());
+                assertEquals(j, squares[j][i].getRow());
+                assertEquals(Color.WHITE, squares[j][i].getColor());
+            }
+        }
 
         assertEquals(TEST_STRING_2, name);
         assertEquals(TEST_ROW_2, rows);
         assertEquals(TEST_COL_2, columns);
         assertEquals(TEST_ROW_2*TEST_COL_2, size);
-        assertEquals(Color.WHITE, color1);
-        assertEquals(Color.WHITE, color2);
-        assertEquals(0, rowIndex1);
-        assertEquals(0, colIndex1);
-        assertEquals(TEST_ROW_2-1, rowIndex2);
-        assertEquals(TEST_COL_2-1, colIndex2);
     }
 
     @Test
@@ -115,28 +98,20 @@ public class GraphghanTest {
 
         int size = graphghan3.getSize();
 
-        GraphghanSquare first = graphghan3.getSquare(0,0);
-        GraphghanSquare last = graphghan3.getSquare(TEST_ROW_3-1,TEST_COL_3-1);
+        GraphghanSquare[][] squares = graphghan3.getSquares();
 
-        Color color1 = first.getColor();
-        Color color2 = last.getColor();
-
-        int rowIndex1 = first.getRow();
-        int colIndex1 = first.getColumn();
-
-        int rowIndex2 = last.getRow();
-        int colIndex2 = last.getColumn();
+        for (int i = 0; i < TEST_COL_3; i++) {
+            for (int j = 0; j < TEST_ROW_3; j++) {
+                assertEquals(i, squares[j][i].getColumn());
+                assertEquals(j, squares[j][i].getRow());
+                assertEquals(Color.WHITE, squares[j][i].getColor());
+            }
+        }
 
         assertEquals(TEST_STRING_3, name);
         assertEquals(TEST_ROW_3, rows);
         assertEquals(TEST_COL_3, columns);
         assertEquals(TEST_ROW_3*TEST_COL_3, size);
-        assertEquals(Color.WHITE, color1);
-        assertEquals(Color.WHITE, color2);
-        assertEquals(0, rowIndex1);
-        assertEquals(0, colIndex1);
-        assertEquals(TEST_ROW_3-1, rowIndex2);
-        assertEquals(TEST_COL_3-1, colIndex2);
     }
 
     @Test
