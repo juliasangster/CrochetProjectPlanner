@@ -48,7 +48,7 @@ public class GraphghanSquare implements Writable {
     }
 
     @Override
-    // TODO: Implement
+    // EFFECTS: returns this as a Json object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("color", color);

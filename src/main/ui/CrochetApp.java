@@ -107,19 +107,20 @@ public class CrochetApp {
         }
     }
 
-    //TODO: comments
+    // MODIFIES: this
+    // EFFECTS:  loads workroom from file
     private void loadProjectCollection() {
         try {
             projects = jsonReader.read();
-            System.out.println("success!!");
+            System.out.println("Successfully loaded file!!");
         } catch (IOException e) {
-            System.out.println("ERROR");
+            System.out.println("Did not load file correctly.");
         }
 
 
     }
 
-    // TODO: comments
+    // EFFECTS: saves the workroom to file
     private void saveProjectCollection() {
         try {
             jsonWriter.open();

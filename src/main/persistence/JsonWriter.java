@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import java.io.*;
 
+// CLASS COMMENT: Represents a writer that writes JSON representation of project collection to file
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

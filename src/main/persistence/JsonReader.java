@@ -13,9 +13,11 @@ import java.util.stream.Stream;
 
 import org.json.*;
 
+// CLASS COMMENT: Represents a reader that reads project collection from JSON data stored in file
 public class JsonReader {
     private String source;
 
+    // EFFECTS: constructs a reader to read from source file
     public JsonReader(String source) {
         this.source = source;
     }
@@ -28,7 +30,7 @@ public class JsonReader {
         return parseCollection(jsonObject);
     }
 
-    // EFFECTS: Reads source file as string and returns it
+    // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 
@@ -59,6 +61,9 @@ public class JsonReader {
         }
     }
 
+    // MODIFIES: projectCollection
+    // EFFECTS:  pulls graphghans from the Json object and processes graphghan square
+    //           data saving to objects
     private void addProject(ProjectCollection projectCollection, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         int columns = jsonObject.getInt("columns");
@@ -73,6 +78,8 @@ public class JsonReader {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS:  changes all colors of squares to match the data stored in json file
     private GraphghanSquare[][] getSquares(JSONArray jsonArray, int rows, int columns) {
         Graphghan graphghanModel = new Graphghan("test", rows, columns);
 

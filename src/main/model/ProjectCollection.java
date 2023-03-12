@@ -84,13 +84,15 @@ public class ProjectCollection extends ArrayList<Graphghan> implements Writable 
     }
 
     @Override
-    // TODO: Implement
+    // EFFECTS: returns this as a JSON object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("Project Collection", graphghansToJson());
         return json;
     }
 
+    // EFFECTS: returns all graphghans in project collection to a
+    //          JSONArray object
     private JSONArray graphghansToJson() {
         JSONArray jsonArray = new JSONArray();
 

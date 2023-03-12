@@ -112,7 +112,7 @@ public class Graphghan implements Writable {
     }
 
     @Override
-    // TODO: Implement
+    // EFFECTS: returns this as JSON object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
@@ -122,6 +122,7 @@ public class Graphghan implements Writable {
         return json;
     }
 
+    // EFFECTS: returns the graphghan squares for this as a JSON array
     private JSONArray squaresToJson() {
         JSONArray jsonArray = new JSONArray();
 
@@ -135,6 +136,8 @@ public class Graphghan implements Writable {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: changes squares to the given squares
     public void setSquares(GraphghanSquare[][] squares) {
         this.squares = squares;
     }

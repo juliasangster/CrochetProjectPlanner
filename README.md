@@ -53,8 +53,8 @@ when starting a new project to decide the background colour to use
 
 ### Phase 2
 
-* As a user, I want to be prompted to save my project collection to file when I 
-am about to leave the app
-* As a user, I want to be able to save/load project collections from a file
-* As a user, I want to the option to load my data upon starting the app
+* As a user, I want to be able to save the entire state of the crochet application
+to a file. I want to be able to select to do so at any time while in the app. 
+* As a user, I want to the option to load from file a previous state of the crochet
+application. I want to be able to select to do so at any time while in the app. 
 
