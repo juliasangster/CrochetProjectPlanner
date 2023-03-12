@@ -201,7 +201,7 @@ public class CrochetApp {
                 throw new Exception();
             }
 
-            projects.addProject(name, columns, rows);
+            projects.addProject(name, rows, columns);
 
             System.out.print("Your new graphghan " + name + " has been added to projects");
         } catch (Exception e) {

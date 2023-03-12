@@ -1,0 +1,73 @@
+{"Project Collection": [
+  {
+    "columns": 2,
+    "name": "test1",
+    "squares": [
+      {
+        "col": 0,
+        "color": "DARK_CYAN",
+        "row": 0
+      },
+      {
+        "col": 0,
+        "color": "BRIGHT_CYAN",
+        "row": 1
+      },
+      {
+        "col": 1,
+        "color": "DARK_GREEN",
+        "row": 0
+      },
+      {
+        "col": 1,
+        "color": "BRIGHT_GREEN",
+        "row": 1
+      }
+    ],
+    "rows": 2
+  },
+  {
+    "columns": 1,
+    "name": "test2",
+    "squares": [
+      {
+        "col": 0,
+        "color": "DARK_YELLOW",
+        "row": 0
+      },
+      {
+        "col": 0,
+        "color": "DARK_MAGENTA",
+        "row": 1
+      },
+      {
+        "col": 0,
+        "color": "DARK_CYAN",
+        "row": 2
+      }
+    ],
+    "rows": 3
+  },
+  {
+    "columns": 3,
+    "name": "test3",
+    "squares": [
+      {
+        "col": 0,
+        "color": "DARK_RED",
+        "row": 0
+      },
+      {
+        "col": 1,
+        "color": "BLACK",
+        "row": 0
+      },
+      {
+        "col": 2,
+        "color": "BRIGHT_RED",
+        "row": 0
+      }
+    ],
+    "rows": 1
+  }
+]}
