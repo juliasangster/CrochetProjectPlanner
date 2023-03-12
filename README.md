@@ -51,6 +51,10 @@ my inputs are registering in the software.
 * As a user, I should be able to fill the entire graphghan with a single color. This will make it easy 
 when starting a new project to decide the background colour to use 
 
+### Phase 2
 
-
+* As a user, I want to be prompted to save my project collection to file when I 
+am about to leave the app
+* As a user, I want to be able to save/load project collections from a file
+* As a user, I want to the option to load my data upon starting the app
 

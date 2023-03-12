@@ -3,7 +3,10 @@ package model;
 // CLASS COMMENT: Class representing a single graphghan square (the smallest unit in a graphghan) with its color
 // and location in the blanket (in row index and column index)
 
-public class GraphghanSquare {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class GraphghanSquare implements Writable {
     private Color color;
     private final int row;
     private final int column;
@@ -44,5 +47,14 @@ public class GraphghanSquare {
         return this.color == color;
     }
 
+    @Override
+    // TODO: Implement
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("color", color);
+        json.put("row", row);
+        json.put("col", column);
+        return json;
+    }
 
 }

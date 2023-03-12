@@ -4,8 +4,12 @@ package model;
 // number of squares along the columns (columns, >= 0), a name (non-empty), and a list of graphghan squares contained
 // in the blanket
 
-public class Graphghan {
-    private final GraphghanSquare[][] squares;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Graphghan implements Writable {
+    private GraphghanSquare[][] squares;
     private final String name;
     private final int rows;
     private final int columns;
@@ -105,6 +109,34 @@ public class Graphghan {
                 square.changeColor(color);
             }
         }
+    }
+
+    @Override
+    // TODO: Implement
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("rows", rows);
+        json.put("columns", columns);
+        json.put("squares", squaresToJson());
+        return json;
+    }
+
+    private JSONArray squaresToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < rows; j++) {
+                jsonArray.put(squares[j][i].toJson());
+            }
+        }
+
+        return jsonArray;
+
+    }
+
+    public void setSquares(GraphghanSquare[][] squares) {
+        this.squares = squares;
     }
 
 }

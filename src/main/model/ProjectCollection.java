@@ -1,11 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
 // CLASS COMMENT: Class representing a list of crochet projects. Extended from ArrayList<Graphghan> in order to
 // inherit built-in ArrayList methods. See: https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html
 
-public class ProjectCollection extends ArrayList<Graphghan> {
+public class ProjectCollection extends ArrayList<Graphghan> implements Writable {
 
     // REQUIRES: rows >= 1 && columns >= 1
     // MODIFIES: this
@@ -78,5 +82,25 @@ public class ProjectCollection extends ArrayList<Graphghan> {
 
         return desiredGraphghan;
     }
+
+    @Override
+    // TODO: Implement
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("Project Collection", graphghansToJson());
+        return json;
+    }
+
+    private JSONArray graphghansToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Graphghan g: this) {
+            jsonArray.put(g.toJson());
+        }
+
+        return jsonArray;
+    }
+
+
 
 }

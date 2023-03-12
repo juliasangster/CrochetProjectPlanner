@@ -8,7 +8,11 @@ import model.Color;
 import model.Graphghan;
 import model.GraphghanSquare;
 import model.ProjectCollection;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,8 +20,11 @@ import java.util.Scanner;
 // with a ProjectCollection and inputs via Scanner
 
 public class CrochetApp {
+    private static final String JSON_STORE = "./data/projects.json";
     private ProjectCollection projects;
     private Scanner input;
+    private JsonReader jsonReader;
+    private JsonWriter jsonWriter;
 
     private static final int MAX_CHOICE_LOOPS = 5;
 
@@ -33,6 +40,8 @@ public class CrochetApp {
         projects = new ProjectCollection();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriter = new JsonWriter(JSON_STORE);
     }
 
 
@@ -48,6 +57,8 @@ public class CrochetApp {
         System.out.println("\td -> delete an existing project");
         System.out.println("\te -> edit a current project");
         System.out.println("\tl -> see a list of all projects");
+        System.out.println("\ts -> save current state");
+        System.out.println("\to -> load previous state");
         System.out.println("\tq -> quit");
     }
 
@@ -86,10 +97,39 @@ public class CrochetApp {
             viewGraphghanList();
         } else if (keyInput.equals("d")) {
             deleteGraphghan();
+        } else if (keyInput.equals("s")) {
+            saveProjectCollection();
+        } else if (keyInput.equals("o")) {
+            loadProjectCollection();
         } else {
             System.out.println("Your choice is not valid.");
             System.out.println("Please select again");
         }
+    }
+
+    //TODO: comments
+    private void loadProjectCollection() {
+        try {
+            projects = jsonReader.read();
+            System.out.println("success!!");
+        } catch (IOException e) {
+            System.out.println("ERROR");
+        }
+
+
+    }
+
+    // TODO: comments
+    private void saveProjectCollection() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(projects);
+            jsonWriter.close();
+            System.out.println("Saved current state");
+        } catch (FileNotFoundException e) {
+            System.out.println("ERROR!");
+        }
+
     }
 
     // EFFECTS:  Prints a single block character representing a Graphghan
