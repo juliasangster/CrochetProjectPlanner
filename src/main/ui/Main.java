@@ -1,9 +1,9 @@
 package ui;
 
-// CLASS COMMENT: Main class in which to run the application from
+import java.io.IOException;
+
 public class Main {
-    // EFFECTS: Main function for running and operation of Crochet Application
-    public static void main(String[] args) {
-        new CrochetApp();
+    public static void main(String[] args) throws IOException {
+        new CrochetApp2();
     }
 }

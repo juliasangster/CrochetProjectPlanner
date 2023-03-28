@@ -8,6 +8,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import java.awt.*;
+
 public class Graphghan implements Writable {
     private GraphghanSquare[][] squares;
     private final String name;
@@ -102,7 +104,7 @@ public class Graphghan implements Writable {
     }
 
     // MODIFIES: this.squares
-    // EFFECTS: changes the colour of all graphghan squares a graphghan to the given color
+    // EFFECTS: changes the color of all graphghan squares a graphghan to the given color
     public void changeColorEntireGraphghan(Color color) {
         for (GraphghanSquare[] squareRow : squares) {
             for (GraphghanSquare square : squareRow) {
@@ -142,4 +144,8 @@ public class Graphghan implements Writable {
         this.squares = squares;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

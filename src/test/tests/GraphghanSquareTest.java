@@ -1,6 +1,6 @@
 package tests;
 
-import model.Color;
+import java.awt.Color;
 import model.GraphghanSquare;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -57,12 +57,12 @@ public class GraphghanSquareTest {
         Color originalColor = graphghanSquare1.getColor();
         graphghanSquare1.changeColor(Color.BLACK);
         Color newColor1 = graphghanSquare1.getColor();
-        graphghanSquare1.changeColor(Color.DARK_BLUE);
+        graphghanSquare1.changeColor(Color.ORANGE);
         Color newColor2 = graphghanSquare1.getColor();
 
         assertEquals(Color.WHITE, originalColor);
         assertEquals(Color.BLACK, newColor1);
-        assertEquals(Color.DARK_BLUE, newColor2);
+        assertEquals(Color.ORANGE, newColor2);
     }
 
     @Test

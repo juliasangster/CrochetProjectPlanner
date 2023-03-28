@@ -3,13 +3,17 @@
     "name": "test1",
     "squares": [
         {
+            "red": 255,
             "col": 0,
-            "color": "DARK_RED",
+            "green": 0,
+            "blue": 0,
             "row": 0
         },
         {
+            "red": 0,
             "col": 1,
-            "color": "DARK_GREEN",
+            "green": 255,
+            "blue": 0,
             "row": 0
         }
     ],

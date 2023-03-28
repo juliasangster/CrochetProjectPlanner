@@ -1,10 +1,10 @@
 package persistence;
 
-import model.Color;
 import model.GraphghanSquare;
 import model.Graphghan;
 import model.ProjectCollection;
 
+import java.awt.*;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -89,7 +89,10 @@ public class JsonReader {
             JSONObject nextSquare = (JSONObject) json;
             int row = nextSquare.getInt("row");
             int col = nextSquare.getInt("col");
-            Color color = Color.valueOf(nextSquare.getString("color"));
+            int red = nextSquare.getInt("red");
+            int green = nextSquare.getInt("green");
+            int blue = nextSquare.getInt("blue");
+            Color color = new Color(red, green, blue);
             GraphghanSquare square = graphghanModel.getSquare(row,col);
             square.changeColor(color);
         }

@@ -46,10 +46,10 @@ my inputs are registering in the software.
 
 #### Additional Stories
 * As a user, I want to be able to quickly see a list of all my projects currently in the program
-* As a user, I should be able to see all colour options while editing, to know what colors are available
-* As a user, I should be able to colour multiple squares by rows or columns, in order to make stripe patterns
+* As a user, I should be able to see all color options while editing, to know what colors are available
+* As a user, I should be able to color multiple squares by rows or columns, in order to make stripe patterns
 * As a user, I should be able to fill the entire graphghan with a single color. This will make it easy 
-when starting a new project to decide the background colour to use 
+when starting a new project to decide the background color to use 
 
 ### Phase 2
 

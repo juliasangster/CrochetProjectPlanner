@@ -6,6 +6,8 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import java.awt.*;
+
 public class GraphghanSquare implements Writable {
     private Color color;
     private final int row;
@@ -44,14 +46,16 @@ public class GraphghanSquare implements Writable {
     // EFFECTS: IF: the given color (color) is the same as this.color, return true.
     //          ELSE: return false.
     public boolean isGivenColor(Color color) {
-        return this.color == color;
+        return this.color.equals(color);
     }
 
     @Override
     // EFFECTS: returns this as a Json object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("color", color);
+        json.put("red", color.getRed());
+        json.put("green", color.getGreen());
+        json.put("blue", color.getBlue());
         json.put("row", row);
         json.put("col", column);
         return json;
