@@ -1,16 +1,15 @@
 package tests;
 
-import java.awt.Color;
 import model.Graphghan;
 import model.GraphghanSquare;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.awt.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 // CLASS COMMENT: Testing suite for model.Graphghan class
-
-// TODO: definitely needs th3e most work - add additional tests
 
 public class GraphghanTest {
 
@@ -419,6 +418,13 @@ public class GraphghanTest {
 
         graphghan1.changeColorEntireRow(Color.CYAN, 5);
 
+    }
+
+    @Test
+
+    public void testToString() {
+        String string = graphghan1.toString();
+        assertEquals(TEST_STRING_1, string);
     }
 
 }

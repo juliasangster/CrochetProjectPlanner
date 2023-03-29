@@ -145,6 +145,7 @@ public class Graphghan implements Writable {
     }
 
     @Override
+    // EFFECTS: returns the name of the graphghan
     public String toString() {
         return this.name;
     }
