@@ -22,7 +22,6 @@ public class SquareButton {
         this.parent = parent;
         styleButton();
         button.addActionListener(new GraphghanSquareActionListener(square));
-
     }
 
     public void styleButton() {
@@ -32,7 +31,12 @@ public class SquareButton {
         button.setFocusPainted(false);
     }
 
+    public JButton getButton() {
+        return this.button;
+    }
+
     public void repaint() {
+        button.setBackground(square.getColor());
         button.repaint();
     }
 
@@ -53,6 +57,8 @@ public class SquareButton {
         @Override
         public void actionPerformed(ActionEvent e) {
             parent.processAction(graphghanSquare);
+            System.out.println("You pressed " + graphghanSquare.getRow() + "X " + graphghanSquare.getColumn());
+            System.out.println(graphghanSquare.getColor());
         }
     }
 

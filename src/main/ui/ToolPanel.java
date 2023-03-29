@@ -10,7 +10,8 @@ import java.util.ArrayList;
 public class ToolPanel {
 
     private static final Color DARK_TEAL = new Color(36,89,83);
-    private static final int BORDER_WIDTH = 4;
+    private static final int BORDER_WIDTH = 1;
+    private static final Color BRIGHT_TEAL = new Color(64,142,145);
 
     private EditingFrame parent;
     private JPanel container;
@@ -54,6 +55,8 @@ public class ToolPanel {
     public void styleToolPanel() {
         container.setLayout(new GridLayout(1,0));
         container.setBorder(BorderFactory.createLineBorder(DARK_TEAL, BORDER_WIDTH));
+        container.setBackground(BRIGHT_TEAL);
+        container.setOpaque(true);
     }
 
     public void addEditToolButtons() {
@@ -103,6 +106,7 @@ public class ToolPanel {
     public JLabel createColorLabel() {
         JLabel currColor = new JLabel();
         currColor.setBackground(DARK_TEAL);
+        currColor.setBorder(BorderFactory.createLineBorder(Color.GRAY, 4));
         currColor.setVisible(true);
         currColor.setOpaque(true);
         currColor.setMinimumSize(new Dimension(10,10));
@@ -122,7 +126,7 @@ public class ToolPanel {
     public JButton createChangeColorButton() {
         JButton changeColor = new JButton("Change Color");
         changeColor.setContentAreaFilled(true);
-        changeColor.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
+        changeColor.setBorder(BorderFactory.createLineBorder(Color.GRAY, 4));
         changeColor.setBackground(Color.WHITE);
         changeColor.setFont(new Font("SANS SERIF", Font.BOLD, 16));
         changeColor.setFocusPainted(true);

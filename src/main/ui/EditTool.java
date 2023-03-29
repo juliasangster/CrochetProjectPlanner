@@ -12,6 +12,8 @@ public abstract class EditTool {
     protected JButton button;
     protected ToolPanel toolPanel;
 
+    private static final Color LIGHT_TEAL = new Color(202,231,232);
+
     private boolean active;
 
     public EditTool(ToolPanel toolPanel) {
@@ -28,7 +30,7 @@ public abstract class EditTool {
 
     protected JButton styleButton(JButton button) {
         button.setContentAreaFilled(true);
-        button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
+        button.setBorder(BorderFactory.createLineBorder(Color.GRAY, 4));
         button.setBackground(Color.WHITE);
         button.setFont(new Font("SANS SERIF", Font.BOLD, 16));
         button.setFocusPainted(true);
@@ -52,10 +54,12 @@ public abstract class EditTool {
 
     public void activate() {
         this.active = true;
+        button.setBackground(LIGHT_TEAL);
     }
 
     public void deactivate() {
         this.active = false;
+        button.setBackground(Color.WHITE);
     }
 
     protected abstract void createButton(ToolPanel toolPanel);

@@ -39,6 +39,7 @@ public class BlanketPanel {
             for (GraphghanSquare square : squareRow) {
                 SquareButton button = new SquareButton(square, this);
                 graphghanButtons.add(button);
+                container.add(button.getButton());
             }
         }
     }
