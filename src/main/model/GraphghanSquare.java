@@ -1,12 +1,12 @@
 package model;
 
-// CLASS COMMENT: Class representing a single graphghan square (the smallest unit in a graphghan) with its color
-// and location in the blanket (in row index and column index)
-
 import org.json.JSONObject;
 import persistence.Writable;
 
 import java.awt.*;
+
+// CLASS COMMENT: Class representing a single graphghan square (the smallest unit in a graphghan) with its color
+// and location in the blanket (in row index and column index)
 
 public class GraphghanSquare implements Writable {
     private Color color;

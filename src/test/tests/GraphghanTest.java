@@ -421,7 +421,7 @@ public class GraphghanTest {
     }
 
     @Test
-
+    // CASE: Test toString()
     public void testToString() {
         String string = graphghan1.toString();
         assertEquals(TEST_STRING_1, string);

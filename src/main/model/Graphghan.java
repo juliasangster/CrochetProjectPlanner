@@ -1,14 +1,14 @@
 package model;
 
-// CLASS COMMENT: Class representing a graphghan blanket, with its number of squares along the rows (rows, >= 0),
-// number of squares along the columns (columns, >= 0), a name (non-empty), and a list of graphghan squares contained
-// in the blanket
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
 import java.awt.*;
+
+// CLASS COMMENT: Class representing a graphghan blanket, with its number of squares along the rows (rows, >= 0),
+// number of squares along the columns (columns, >= 0), a name (non-empty), and a list of graphghan squares contained
+// in the blanket
 
 public class Graphghan implements Writable {
     private GraphghanSquare[][] squares;

@@ -24,10 +24,12 @@ public class ProjectCollection extends ArrayList<Graphghan> implements Writable 
         Graphghan newProject;
 
         if (this.getAllNames().contains(name)) {
+            EventLog.getInstance().logEvent(new Event("Failed to add blanket: " + name));
             return false;
         }
         newProject = new Graphghan(name, rows, columns);
         this.add(newProject);
+        EventLog.getInstance().logEvent(new Event("Added blanket: " + name));
         return true;
     }
 
@@ -39,10 +41,12 @@ public class ProjectCollection extends ArrayList<Graphghan> implements Writable 
     public boolean removeProject(String name) {
         for (Graphghan g: this) {
             if (g.getName().equals(name)) {
+                EventLog.getInstance().logEvent(new Event("Removed blanket: " + name));
                 this.remove(g);
                 return true;
             }
         }
+        EventLog.getInstance().logEvent(new Event("Failed to remove blanket: " + name));
         return false;
     }
 

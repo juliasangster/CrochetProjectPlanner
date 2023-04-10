@@ -30,7 +30,7 @@ a JPEG image and having a graphghan pattern automatically generate, having a yar
 and more. I believe this program will provide a useful
 framework for future, more extensive projects. As well, many people who crochet professionally 
 produce patterns as their product, and this application could be used to streamline pattern-making workflows. 
-
+***
 ## Phase 1
 
 #### Main Four User Stories:
@@ -49,7 +49,7 @@ my inputs are registering in the software.
 * As a user, I should be able to color multiple squares by rows or columns, in order to make stripe patterns
 * As a user, I should be able to fill the entire graphghan with a single color. This will make it easy 
 when starting a new project to decide the background color to use 
-
+***
 ## Phase 2
 
 ### Additional User Stories Implemented
@@ -59,7 +59,7 @@ to a file. I want to be able to select to do so at any time while in the app.
 * As a user, I want to the option to load from file a previous state of the crochet
 application. I want to be able to select to do so at any time while in the app. 
 
-
+***
 ## Phase 3
 
 ### User Stories Implemented
@@ -153,3 +153,105 @@ application. I want to be able to select to do so at any time while in the app.
    * Closing the window will dispose of the editing window and re-display the projects
      panel, but will save the changes you made to the graphghan
      * See this quickly by closing and re-opening a project you've edited 
+***
+## Phase 4
+
+### Task 2 - Logging Events
+
+Events that are logged
+* Adding projects to project collection (`addProject()`)
+  * Logs failures to add blankets: "Failed to add blanket: <<name>>"
+  * Logs successful additions of blankets: "Added blanket: <<name>>"
+* Removing projects from project collection (`removeProject()`)
+  * Logs failures to remove blankets: "Failed to remove blanket: <<name>>"
+  * Logs successful removals of blankets: "Removed blanket: <<name>>"
+
+**Sample Event Log**
+> Sun Apr 09 13:18:52 PDT 2023
+> 
+> Added blanket: Test 1
+> 
+> Sun Apr 09 13:18:56 PDT 2023
+> 
+> Failed to add blanket: Test 1
+>
+> Sun Apr 09 13:19:00 PDT 2023
+> 
+> Added blanket: Test 2
+>
+> Sun Apr 09 13:19:03 PDT 2023
+> 
+> Added blanket: Test 3
+>
+> Sun Apr 09 13:19:08 PDT 2023
+> 
+> Added blanket: Test 4
+>
+> Sun Apr 09 13:19:10 PDT 2023
+> 
+> Removed blanket: Test 1
+>
+> Sun Apr 09 13:19:11 PDT 2023
+> 
+> Removed blanket: Test 2
+>
+> Sun Apr 09 13:19:12 PDT 2023
+> 
+> Removed blanket: Test 3
+>
+>
+> Process finished with exit code 0
+
+### Task 3 - UML Diagram and Refactoring
+
+The UML Diagram has been saved in the root folder as UML_Design_Diagram.png
+
+![](UML_Design_Diagram.png)
+
+Notes:
+* Included ArrayList<Graphghan> as ProjectCollection extends this built-in Java class
+* Interfaces denoted by red boxes and annotations
+* Abstract classes denoted by yellow boxes and annotations
+* Built-in Java classes denoted by blue boxes
+* Enums are denoted by green boxes and annotations
+
+#### Refactoring
+
+A bidirectional relationship was implemented for many aspects of the GUI. 
+This was done so that the sub element can always reference the parent element, and vice versa. 
+For example, `EditingFrame` and `CrochetApp2` have this relationship, which allows `EditingFrame`
+to call a method on `CrochetApp2` when closed to redisplay `ProjectsPanel` in `CrochetApp2`. 
+
+However, I neglected to implement this type of relationship between `ProjectsPanel` and `CrochetApp2`. 
+As a result, there were difficulties in getting `ProjectsPanel` to redisplay properly after events, as it could not 
+directly call methods on `CrochetApp2`. With more time I would implement a one-to-one bidirectional relationship
+between `CrochetApp2` and `ProjectsPanel`. 
+
+Further, when initially designing the application I chose to have `ProjectCollection`
+extend `ArrayList<Graphghan>`. I believed I had made an excellent choice, as I could use
+the built-in functions for `ArrayList<E>`. However, this caused issues in the visibility of 
+`ProjectCollection` and what objects were able to call add/remove on the list of graphghans.
+Java's `ArrayList` methods `add(Element E)` and `remove(Element E)` both have the `public` access modifier.
+As a result, calls to `add()` and `remove()` from the ui package was possible, but not desirable, 
+as methods `addProject()` and `removeProject()` were implemented to facilitate this and event logging. 
+As a result, situations occurred when updating the code in which the wrong method was called 
+from the UI package and the associated logging was not completed. 
+
+To improve on this design choice, I would instead make `ProjectCollection` have a private field
+which is of type `ArrayList<Graphghan>`. I would then re-implement the methods to add/remove
+graphghans from the project collection in `ProjectCollection`. This would prevent someone maintaining the code from
+wrongly using the `add()` and `remove()` functions on the `ProjectCollection` from outside the 
+ class.
+
+Lastly, the GUI has a top-level container (`CrochetApp2`) and three sub-containers (`MainMenu`, `ProjectsPanel` and
+`EditingFrame`). I decided initially to make `ProjectsPanel` and `EditingFrame` their own classes, and left `MainMenu`
+as a `JPanel` field in `CrochetApp2`. With more time, I would create an interface  called `CrochetAppPanel`. This 
+interface would have methods `show()`, `repaint()`, `hide()` and others as common GUI panel behaviours are discovered. 
+`CrochetApp2` would thus have a collection of `CrochetAppPanel` that it could iterate over to change all sub-elements. 
+I believe this would greatly improve the maintainability of the code. 
+
+***
+
+Thanks for reading Babak - good luck on your exams!
+
+

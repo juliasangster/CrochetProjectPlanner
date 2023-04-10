@@ -1,5 +1,7 @@
 package ui.gui;
 
+import model.Event;
+import model.EventLog;
 import model.Graphghan;
 import model.ProjectCollection;
 import persistence.JsonReader;
@@ -9,6 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -35,6 +39,7 @@ public class CrochetApp2 extends JFrame {
     // EFFECTS: Constructs and runs a crochet application with no projects loaded
     public CrochetApp2() throws IOException {
         super("Crochet App");
+        this.addWindowListener(new CrochetAppWindowListener());
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
         appSize = dimensionsOfScreen();
@@ -44,6 +49,60 @@ public class CrochetApp2 extends JFrame {
         projectsPanel = new ProjectsPanel(projects);
         this.add(projectsPanel.getContainer());
         pack();
+    }
+
+    // CLASS COMMENT: Window listener for CrochetApp2 to ensure event log
+    //                is printed upon closing the application
+    private class CrochetAppWindowListener implements WindowListener {
+
+        @Override
+        // EFFECTS: No default behaviour
+        public void windowOpened(WindowEvent e) {
+            //
+        }
+
+        @Override
+        // EFFECTS: Prints event log to console
+        public void windowClosing(WindowEvent e) {
+            printEventLog(model.EventLog.getInstance());
+        }
+
+        @Override
+        // EFFECTS: No default behaviour
+        public void windowClosed(WindowEvent e) {
+            //
+        }
+
+        @Override
+        // EFFECTS: No default behaviour
+        public void windowIconified(WindowEvent e) {
+            //
+        }
+
+        @Override
+        // EFFECTS: No default behaviour
+        public void windowDeiconified(WindowEvent e) {
+            //
+        }
+
+        @Override
+        // EFFECTS: No default behaviour
+        public void windowActivated(WindowEvent e) {
+            //
+        }
+
+        @Override
+        // EFFECTS: No default behaviour
+        public void windowDeactivated(WindowEvent e) {
+            //
+        }
+    }
+
+    // EFFECTS: Prints event log to the console
+    private void printEventLog(EventLog instance) {
+        for (Event next: instance) {
+            System.out.println(next.toString() + "\n");
+        }
     }
 
     // EFFECTS: constructs and creates a JComboBox (drop-down box) with all
@@ -343,8 +402,7 @@ public class CrochetApp2 extends JFrame {
     // EFFECTS:  prompts user to select a graphghan to delete and then deletes graphghan
     private void processDelete() {
         Graphghan g = processSelectGraphghan("Select Graphghan to Delete");
-        projects.remove(g);
-        assert !(projects.containsGivenProject(g.getName()));
+        projects.removeProject(g.getName());
         projectsPanel.update(projects);
     }
 
@@ -444,6 +502,7 @@ public class CrochetApp2 extends JFrame {
         public void actionPerformed(ActionEvent e) {
             int result = processQuit();
             if (result == JOptionPane.OK_OPTION) {
+                printEventLog(EventLog.getInstance());
                 System.exit(0);
             }
         }
