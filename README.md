@@ -1,12 +1,9 @@
 # Graphghan Pattern Creator
 ***
 
-## Proposal
-***
-
 Crochet is an ancient fibre art, in which yarn is weaved into complex patterns using a hook. 
-Crochet artists refer to their work as "projects", and often follow recipe-like patterns to design their work. 
-This ensures that, geometrically, the stitches will form the correct shapes and be resistant to breakage. 
+Crochet artists refer to their work as "projects".
+
 One of the most notorious crochet projects is the afghan, otherwise known as the throw blanket.
 And of the afghans, one of the most notoriously difficult afghans to create is the graphghan, an afghan that you stitch
 a pixelated pattern into. These blankets often take weeks of pre-planning, collecting materials, and then months
@@ -30,37 +27,8 @@ a JPEG image and having a graphghan pattern automatically generate, having a yar
 and more. I believe this program will provide a useful
 framework for future, more extensive projects. As well, many people who crochet professionally 
 produce patterns as their product, and this application could be used to streamline pattern-making workflows. 
-***
-## Phase 1
-
-#### Main Four User Stories:
-* As a user, I want to be add new templates for crochet graphghan patterns to my collection of patterns by adding 
-dimensions of length and width. I want to be able to give these patterns a name. 
-* As a user, I want to be able to remove the projects from the collection by providing the name of the project to remove
-* As a user, I want to be able to change the colours on the graphghan template, in order to design my own patterns. 
-I should be able to pick multiple different colours on the same graphghan.
-* As a user, I want to be able to visualize the graphghan pattern I'm designing in the console, with colours. I should
-see an update to this visualization when editing the pattern, as this will confirm to me (the user) that 
-my inputs are registering in the software. 
-
-#### Additional Stories
-* As a user, I want to be able to quickly see a list of all my projects currently in the program
-* As a user, I should be able to see all color options while editing, to know what colors are available
-* As a user, I should be able to color multiple squares by rows or columns, in order to make stripe patterns
-* As a user, I should be able to fill the entire graphghan with a single color. This will make it easy 
-when starting a new project to decide the background color to use 
-***
-## Phase 2
-
-### Additional User Stories Implemented
-
-* As a user, I want to be able to save the entire state of the crochet application
-to a file. I want to be able to select to do so at any time while in the app. 
-* As a user, I want to the option to load from file a previous state of the crochet
-application. I want to be able to select to do so at any time while in the app. 
 
 ***
-## Phase 3
 
 ### User Stories Implemented
 * As a user, I want to add new templates for crochet graphghan patterns to my collection of patterns by adding
@@ -82,10 +50,8 @@ application. I want to be able to select to do so at any time while in the app.
   I add or delete projects from the project collection.
 * As a user, I want to be able to clear all projects from the project collection in a single action
 
-
-### Graphical Component
-
-### Instructions for Grader
+***
+### Instructions for Use
 
 1. How to add a new graphghan to project collection
    * When the application is running a main menu should appear on the left-hand side
@@ -113,30 +79,23 @@ application. I want to be able to select to do so at any time while in the app.
     * A pop-up window should appear asking you to confirm you would like to delete all projects
     * Hit `OK`
     * The projects shown under the headings `Projects` should now be empty
-   
-
-4. Where to find visual component
-   * After adding a new project (1) or loading from file (6) the panel with the headings `Projects` will appear
-   * A small picture below shows the visual component
-     ![](data/app_preloads.png)
-   * Note as well these are the preloaded projects I've created for you 
 
 
-5. How to save state of application
+4. How to save state of application
     * On the main menu press `Save`
     * A pop-up window will appear asking you to confirm the save
     * Hit `OK`
     * Your data will now be saved to the JSON file 
  
   
-6. How to load state 
+5. How to load state 
    * On the main menu hit `Load`
    * A pop-up window will appear asking you to confirm the load
    * Hit `OK`
    * Your data will now be loaded, and the loaded data should be reflected in the app
 
 
-7. How to edit a graphghan 
+6. How to edit a graphghan 
    * Make sure you have at least one project in the project collection
    * On the main menu hit `Edit Project`
    * A window such as the one below will open for the selected graphghan
@@ -154,9 +113,7 @@ application. I want to be able to select to do so at any time while in the app.
      panel, but will save the changes you made to the graphghan
      * See this quickly by closing and re-opening a project you've edited 
 ***
-## Phase 4
-
-### Task 2 - Logging Events
+## Event Log 
 
 Events that are logged
 * Adding projects to project collection (`addProject()`)
@@ -250,8 +207,5 @@ interface would have methods `show()`, `repaint()`, `hide()` and others as commo
 `CrochetApp2` would thus have a collection of `CrochetAppPanel` that it could iterate over to change all sub-elements. 
 I believe this would greatly improve the maintainability of the code. 
 
-***
-
-Thanks for reading Babak - good luck on your exams!
 
 
